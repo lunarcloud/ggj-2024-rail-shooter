@@ -1,3 +1,58 @@
-[gd_scene format=3 uid="uid://chj0pgyxiko4l"]
+[gd_scene load_steps=9 format=3 uid="uid://chj0pgyxiko4l"]
+
+[ext_resource type="PackedScene" uid="uid://bgfunvfcwx42m" path="res://addons/kaykit_prototype_bits/Assets/gltf/Floor.gltf" id="1_qbf23"]
+[ext_resource type="PackedScene" uid="uid://b5y2ubrchv77r" path="res://addons/kaykit_prototype_bits/Assets/gltf/Barrel_A.gltf" id="2_7t8ao"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="3_a8cdm"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_u3jc4"]
+[ext_resource type="PackedScene" uid="uid://cth06yd5re42s" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_small.gltf" id="5_qias4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o4qgp"]
+sky_top_color = Color(0.584314, 0.894118, 1, 1)
+sky_horizon_color = Color(0.698039, 0.917647, 1, 1)
+ground_bottom_color = Color(0.188235, 0.2, 0.2, 1)
+
+[sub_resource type="Sky" id="Sky_xeoko"]
+sky_material = SubResource("ProceduralSkyMaterial_o4qgp")
+
+[sub_resource type="Environment" id="Environment_j5hbc"]
+background_mode = 2
+sky = SubResource("Sky_xeoko")
+ambient_light_source = 2
+ambient_light_color = Color(0.690196, 0.690196, 0.690196, 1)
+reflected_light_source = 1
+sdfgi_enabled = true
+fog_sky_affect = 0.5
 
 [node name="Level1" type="Node3D"]
+
+[node name="Floor2" parent="." instance=ExtResource("1_qbf23")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.331236, 0, 0.690094)
+
+[node name="Barrel_A2" parent="." instance=ExtResource("2_7t8ao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.409332, 1.0921, -0.173463)
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.442951, 1.60483, 3.44038)
+script = ExtResource("3_a8cdm")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.442951, 1.60483, 3.44038)
+current = true
+fov = 74.9862
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+script = ExtResource("4_u3jc4")
+
+[node name="target_small2" parent="." instance=ExtResource("5_qias4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.764101, 0.425178, 0.647097)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j5hbc")

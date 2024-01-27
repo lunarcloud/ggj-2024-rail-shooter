@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cbtpokvpidwnl"
+path="res://.godot/imported/Beat One.mp3-5d4a0543e9d49b2b48d433e4ae30241a.mp3str"
+
+[deps]
+
+source_file="res://level/Beat One.mp3"
+dest_files=["res://.godot/imported/Beat One.mp3-5d4a0543e9d49b2b48d433e4ae30241a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

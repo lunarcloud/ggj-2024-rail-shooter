@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c13n2y5rwk81n"]
+[gd_scene load_steps=7 format=3 uid="uid://c13n2y5rwk81n"]
 
 [ext_resource type="PackedScene" uid="uid://df5ui71m4h2x3" path="res://sinden_border/sinden_border.tscn" id="1_qwrd2"]
+[ext_resource type="Script" path="res://fade_to_black.gd" id="2_1g820"]
 [ext_resource type="PackedScene" uid="uid://ctgi3nme7o3fj" path="res://menu/menu.tscn" id="2_5qn58"]
+
+[sub_resource type="Gradient" id="Gradient_yjotl"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e65rv"]
+gradient = SubResource("Gradient_yjotl")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nfgm"]
 bg_color = Color(1, 1, 1, 0)
@@ -19,12 +26,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Menu" parent="." instance=ExtResource("2_5qn58")]
+layout_mode = 1
+
+[node name="FadeToBlack" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_e65rv")
+script = ExtResource("2_1g820")
+
 [node name="SindenBorder" parent="." instance=ExtResource("1_qwrd2")]
 visible = false
 layout_mode = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_0nfgm")
 
-[node name="Menu" parent="." instance=ExtResource("2_5qn58")]
-layout_mode = 1
-
 [connection signal="border_enabled" from="Menu" to="SindenBorder" method="_on_border_toggled"]
+[connection signal="level_transition_end" from="Menu" to="FadeToBlack" method="to_transparent"]
+[connection signal="level_transition_start" from="Menu" to="FadeToBlack" method="to_black"]

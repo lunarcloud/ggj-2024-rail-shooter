@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctgi3nme7o3fj"]
+[gd_scene load_steps=7 format=3 uid="uid://ctgi3nme7o3fj"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_e4dji"]
+[ext_resource type="AudioStream" uid="uid://ci5ji8u7u4crv" path="res://addons/kenney_interface_sounds/click_002.wav" id="2_0u4gy"]
+[ext_resource type="Shader" path="res://menu/diamond_anim.gdshader" id="2_in50k"]
+[ext_resource type="AudioStream" uid="uid://dtukqrr0cjuta" path="res://menu/Funky Energy Loop.mp3" id="3_rucph"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u2rgb"]
+shader = ExtResource("2_in50k")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rs6yw"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -10,6 +18,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e4dji")
+
+[node name="MenuBg" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_u2rgb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_rs6yw")
+
+[node name="Sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0u4gy")
+bus = &"Effects"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rucph")
+autoplay = true
+bus = &"Music"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -30,7 +57,7 @@ text = "Night of the Living Butt"
 
 [node name="BorderToggle" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 4
 text = "Sinden Lightgun Borders"
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
@@ -45,6 +72,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Quit"
 
+[connection signal="focus_entered" from="VBoxContainer/BorderToggle" to="." method="_on_button_focus"]
+[connection signal="mouse_entered" from="VBoxContainer/BorderToggle" to="." method="_on_button_focus"]
 [connection signal="toggled" from="VBoxContainer/BorderToggle" to="." method="_on_sinden_borders_toggled"]
+[connection signal="focus_entered" from="VBoxContainer/PlayButton" to="." method="_on_button_focus"]
+[connection signal="mouse_entered" from="VBoxContainer/PlayButton" to="." method="_on_button_focus"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play"]
+[connection signal="focus_entered" from="VBoxContainer/QuitButton" to="." method="_on_button_focus"]
+[connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_button_focus"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="quit"]

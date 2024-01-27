@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dgkqgl3vfek6v"]
+
+[ext_resource type="Shader" path="res://addons/flexible_toon_shader/hatch_toon.gdshader" id="1_q44bp"]
+[ext_resource type="Texture2D" uid="uid://c0dpox2fcqs5d" path="res://addons/flexible_toon_shader/example/cup_texture.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://1qnxn1x7e2vc" path="res://addons/flexible_toon_shader/hatch.png" id="3_s6hul"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_q44bp")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/cuts = 2
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = null
+shader_parameter/use_attenuation = true
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/hatch_scale = 2.739
+shader_parameter/use_triplanar = true
+shader_parameter/albedo_texture = ExtResource("2")
+shader_parameter/hatch_texture = ExtResource("3_s6hul")
