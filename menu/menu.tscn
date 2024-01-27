@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctgi3nme7o3fj"]
+[gd_scene load_steps=8 format=3 uid="uid://ctgi3nme7o3fj"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_e4dji"]
 [ext_resource type="AudioStream" uid="uid://ci5ji8u7u4crv" path="res://addons/kenney_interface_sounds/click_002.wav" id="2_0u4gy"]
 [ext_resource type="Shader" path="res://menu/diamond_anim.gdshader" id="2_in50k"]
 [ext_resource type="AudioStream" uid="uid://dtukqrr0cjuta" path="res://menu/Funky Energy Loop.mp3" id="3_rucph"]
+[ext_resource type="AudioStream" uid="uid://ds8y1vry41qqa" path="res://addons/kenney voiceover pack fighter/arcade_mode.ogg" id="4_ruiu8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u2rgb"]
 shader = ExtResource("2_in50k")
@@ -32,6 +33,11 @@ texture = SubResource("CanvasTexture_rs6yw")
 [node name="Sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0u4gy")
 bus = &"Effects"
+
+[node name="Voice" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ruiu8")
+autoplay = true
+bus = &"Voice"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_rucph")

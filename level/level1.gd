@@ -6,7 +6,7 @@ var section_targets := [
 	1,
 	1,
 	0,
-	3
+	4
 ]
 
 var level_is_complete := false
@@ -31,6 +31,8 @@ var voice : AudioStreamPlayer = $"Player/Voice"
 
 const READY : AudioStreamOggVorbis = preload("res://addons/kenney voiceover pack fighter/ready.ogg")
 const GO : AudioStreamOggVorbis = preload("res://addons/kenney voiceover pack/voice type 2/go.ogg")
+const MISSION_COMPLETED : AudioStreamOggVorbis = preload("res://addons/kenney voiceover pack/voice type 2/mission_completed.ogg")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -57,10 +59,17 @@ func update_camera() -> void:
 	section_cams[current_section].set_priority(0)
 	current_section += 1
 	if current_section >= section_cams.size():
-		level_is_complete = true
-		level_complete.emit()
+		complete_level()
 	else:
 		section_cams[current_section].set_priority(1)
 		if section_targets[current_section] <= 0:
 			await get_tree().create_timer(1).timeout
 			update_camera()
+
+
+func complete_level() -> void:
+	level_is_complete = true
+	voice.stream = MISSION_COMPLETED
+	voice.play(0)
+	await voice.finished
+	level_complete.emit()
