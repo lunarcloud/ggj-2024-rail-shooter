@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Primitive_Stairs_Half.gltf-a59c38515b5656682e
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

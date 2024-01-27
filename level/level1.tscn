@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://chj0pgyxiko4l"]
+[gd_scene load_steps=13 format=3 uid="uid://chj0pgyxiko4l"]
 
 [ext_resource type="Script" path="res://level/level1.gd" id="1_8es4g"]
 [ext_resource type="Script" path="res://level/player.gd" id="1_gnn81"]
@@ -8,7 +8,6 @@
 [ext_resource type="MeshLibrary" uid="uid://d038q44admb2h" path="res://addons/kaykit_prototype_bits/kaykit_proto.meshlib" id="5_0itso"]
 [ext_resource type="PackedScene" uid="uid://cth06yd5re42s" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_small.gltf" id="5_qias4"]
 [ext_resource type="Script" path="res://level/shot_target.gd" id="8_82b6o"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_j3s1d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o4qgp"]
 sky_top_color = Color(0.584314, 0.894118, 1, 1)
@@ -26,12 +25,6 @@ ambient_light_color = Color(0.690196, 0.690196, 0.690196, 1)
 reflected_light_source = 1
 sdfgi_enabled = true
 fog_sky_affect = 0.5
-
-[sub_resource type="Resource" id="Resource_npb3s"]
-script = ExtResource("8_j3s1d")
-duration = 1.0
-transition = 0
-ease = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0r26x"]
 height = 0.104286
@@ -55,8 +48,11 @@ bullet_collision_mask = 16
 [node name="Sfx" type="AudioStreamPlayer" parent="Player"]
 bus = &"Effects"
 
+[node name="Voice" type="AudioStreamPlayer" parent="Player"]
+bus = &"Voice"
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.984905, 0.173098, 0, -0.173098, 0.984905, 0.443, 2, 3.44)
+transform = Transform3D(1, 0, 0, 0, 0.984905, 0.173098, 0, -0.173098, 0.984905, 0.5, 2, 3.44)
 current = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -66,7 +62,7 @@ script = ExtResource("4_u3jc4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Section1" type="Node3D" parent="Shots"]
-transform = Transform3D(1, 0, 0, 0, 0.984905, 0.173098, 0, -0.173098, 0.984905, 0.443, 0, 3.44)
+transform = Transform3D(1, 0, 0, 0, 0.984905, 0.173098, 0, -0.173098, 0.984905, 0.5, 0, 3.44)
 script = ExtResource("3_a8cdm")
 priority_override = false
 priority = 1
@@ -84,7 +80,31 @@ priority_override = false
 priority = 0
 follow_mode = 0
 look_at_mode = 0
-tween_parameters = SubResource("Resource_npb3s")
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="Section3" type="Node3D" parent="Shots"]
+transform = Transform3D(0.487571, 0, -0.873084, 0, 1, 0, 0.873084, 0, 0.487571, 13.2197, 0, -9.01092)
+script = ExtResource("3_a8cdm")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="Section4" type="Node3D" parent="Shots"]
+transform = Transform3D(0.880469, 0, 0.474104, 0, 1, 0, -0.474104, 0, 0.880469, 15, 0, -14)
+script = ExtResource("3_a8cdm")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 0
+tween_parameters = null
 tween_on_load = true
 inactive_update_mode = 0
 camera_3D_resource = null
@@ -117,4 +137,18 @@ script = ExtResource("8_82b6o")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.000308633, 0.030732, 0.0973968)
 shape = SubResource("CylinderShape3D_0r26x")
 
+[node name="target_small3" parent="." instance=ExtResource("5_qias4")]
+transform = Transform3D(1.67395, 0, -1.09448, 0, 2, 0, 1.09448, 0, 1.67395, 6.99634, -0.256065, -10.667)
+
+[node name="Small Target" type="Area3D" parent="target_small3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.828559, 0)
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("8_82b6o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target_small3/Small Target"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.000308633, 0.030732, 0.0973968)
+shape = SubResource("CylinderShape3D_0r26x")
+
 [connection signal="target_shot" from="target_small2/Small Target" to="." method="_on_target_shot"]
+[connection signal="target_shot" from="target_small3/Small Target" to="." method="_on_target_shot"]

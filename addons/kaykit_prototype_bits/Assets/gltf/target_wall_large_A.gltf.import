@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/target_wall_large_A.gltf-4d13c0e38d0ef17d9b66
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

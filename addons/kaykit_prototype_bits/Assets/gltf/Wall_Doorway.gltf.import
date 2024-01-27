@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Wall_Doorway.gltf-5c54356f6158e3b04ef8d00147f
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

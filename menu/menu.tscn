@@ -52,22 +52,29 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Night of the Living Butt"
+theme_override_font_sizes/font_size = 200
+text = "Cool Shoot"
 
 [node name="BorderToggle" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+button_pressed = true
 text = "Sinden Lightgun Borders"
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(120, 40)
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 80
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(240, 120)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Play"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(120, 40)
+[node name="QuitButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(240, 120)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Quit"
@@ -75,9 +82,9 @@ text = "Quit"
 [connection signal="focus_entered" from="VBoxContainer/BorderToggle" to="." method="_on_button_focus"]
 [connection signal="mouse_entered" from="VBoxContainer/BorderToggle" to="." method="_on_button_focus"]
 [connection signal="toggled" from="VBoxContainer/BorderToggle" to="." method="_on_sinden_borders_toggled"]
-[connection signal="focus_entered" from="VBoxContainer/PlayButton" to="." method="_on_button_focus"]
-[connection signal="mouse_entered" from="VBoxContainer/PlayButton" to="." method="_on_button_focus"]
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play"]
-[connection signal="focus_entered" from="VBoxContainer/QuitButton" to="." method="_on_button_focus"]
-[connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_button_focus"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="quit"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_button_focus"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_button_focus"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayButton" to="." method="play"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_button_focus"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_button_focus"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/QuitButton" to="." method="quit"]

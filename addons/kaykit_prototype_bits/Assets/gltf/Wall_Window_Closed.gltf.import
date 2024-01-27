@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Wall_Window_Closed.gltf-1e89e5829bffa90a1940e
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

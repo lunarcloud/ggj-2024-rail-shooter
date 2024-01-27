@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Primitive_Floor_Hole.gltf-81cca1d459b4270ba29
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

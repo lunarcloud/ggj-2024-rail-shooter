@@ -1,3 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
 addons/phantom_camera/examples/
+.png~
+.txt~
+.jpg~

@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ddh5hx3fv2q37"]
+
+[ext_resource type="FontFile" uid="uid://dmsubhhiu87dp" path="res://addons/rainbow-2000-font/Rainbow2000Bold-51npa.ttf" id="1_owvi4"]
+
+[resource]
+default_base_scale = 2.0
+default_font = ExtResource("1_owvi4")
+default_font_size = 32

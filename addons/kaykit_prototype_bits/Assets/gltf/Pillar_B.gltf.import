@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Pillar_B.gltf-ae8bc95644aa5af68a98024ab89bd97
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

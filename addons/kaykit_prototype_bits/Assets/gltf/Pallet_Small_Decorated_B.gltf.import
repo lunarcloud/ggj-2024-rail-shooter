@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Pallet_Small_Decorated_B.gltf-e501d9bfa994243
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
