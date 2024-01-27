@@ -1,15 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://chj0pgyxiko4l"]
+[gd_scene load_steps=19 format=3 uid="uid://chj0pgyxiko4l"]
 
 [ext_resource type="Script" path="res://level/level1.gd" id="1_8es4g"]
-[ext_resource type="Script" path="res://level/player.gd" id="1_gnn81"]
 [ext_resource type="AudioStream" uid="uid://cbtpokvpidwnl" path="res://level/Beat One.mp3" id="1_oj25m"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="3_a8cdm"]
-[ext_resource type="Script" path="res://level/hud_ui.gd" id="4_71xi3"]
-[ext_resource type="Texture2D" uid="uid://njnedjormd4m" path="res://bullet.png" id="4_s57n0"]
+[ext_resource type="Script" path="res://player.gd" id="3_boyak"]
+[ext_resource type="PackedScene" uid="uid://die3q8qjh2fe5" path="res://hud/hud.tscn" id="4_npofv"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_u3jc4"]
 [ext_resource type="MeshLibrary" uid="uid://d038q44admb2h" path="res://addons/kaykit_prototype_bits/kaykit_proto.meshlib" id="5_0itso"]
 [ext_resource type="PackedScene" uid="uid://cth06yd5re42s" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_small.gltf" id="5_qias4"]
-[ext_resource type="Script" path="res://level/shot_target.gd" id="8_82b6o"]
+[ext_resource type="Script" path="res://shot_target.gd" id="9_ifs8p"]
 [ext_resource type="PackedScene" uid="uid://5frscqa3fsve" path="res://addons/kaykit_prototype_bits/Assets/gltf/Door_B.gltf" id="11_kc1t7"]
 [ext_resource type="PackedScene" uid="uid://57ajvyunmy8h" path="res://addons/kaykit_prototype_bits/Assets/gltf/target.gltf" id="12_efeok"]
 [ext_resource type="PackedScene" uid="uid://cd328e2gs4hnn" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_stand_B.gltf" id="13_4i2my"]
@@ -33,14 +32,15 @@ sdfgi_enabled = true
 fog_sky_affect = 0.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0r26x"]
-height = 0.104286
-radius = 0.19424
+height = 0.255502
+radius = 0.309488
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_snwo6"]
 points = PackedVector3Array(-1.01587, -1.01587, -0.115851, 0.958011, 0.958011, 0.1, 0.958011, -0.958011, 0.1, 1.01587, 1.01587, -0.115851, -0.958011, 0.958011, 0.1, 1.01587, -1.01587, -0.115851, -1.01587, 1.01587, -0.115851, -0.958011, -0.958011, 0.1)
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_8es4g")
+total_bullets = 3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j5hbc")
@@ -51,7 +51,7 @@ autoplay = true
 bus = &"Music"
 
 [node name="Player" type="Node3D" parent="."]
-script = ExtResource("1_gnn81")
+script = ExtResource("3_boyak")
 bullet_collision_mask = 16
 
 [node name="Sfx" type="AudioStreamPlayer" parent="Player"]
@@ -60,100 +60,12 @@ bus = &"Effects"
 [node name="Voice" type="AudioStreamPlayer" parent="Player"]
 bus = &"Voice"
 
-[node name="HUD" type="Control" parent="Player"]
-layout_mode = 3
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 123.0
-offset_top = 123.0
-offset_right = 253.0
-offset_bottom = -232.0
-grow_vertical = 2
-script = ExtResource("4_71xi3")
-
-[node name="Bullet" type="VBoxContainer" parent="Player/HUD"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Bullet1" type="TextureRect" parent="Player/HUD/Bullet"]
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("4_s57n0")
-expand_mode = 5
-
-[node name="Bullet2" type="TextureRect" parent="Player/HUD/Bullet"]
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("4_s57n0")
-expand_mode = 5
-
-[node name="Bullet3" type="TextureRect" parent="Player/HUD/Bullet"]
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("4_s57n0")
-expand_mode = 5
-
-[node name="Bullet4" type="TextureRect" parent="Player/HUD/Bullet"]
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("4_s57n0")
-expand_mode = 5
-
-[node name="Bullet5" type="TextureRect" parent="Player/HUD/Bullet"]
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("4_s57n0")
-expand_mode = 5
-
-[node name="Bullet6" type="TextureRect" parent="Player/HUD/Bullet"]
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("4_s57n0")
-expand_mode = 5
-
-[node name="Bullet7" type="TextureRect" parent="Player/HUD/Bullet"]
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("4_s57n0")
-expand_mode = 5
-
-[node name="Bullet8" type="TextureRect" parent="Player/HUD/Bullet"]
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("4_s57n0")
-expand_mode = 5
-
-[node name="Bullet9" type="TextureRect" parent="Player/HUD/Bullet"]
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("4_s57n0")
-expand_mode = 5
-
-[node name="Bullet10" type="TextureRect" parent="Player/HUD/Bullet"]
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("4_s57n0")
-expand_mode = 5
-
-[node name="Bullet11" type="TextureRect" parent="Player/HUD/Bullet"]
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("4_s57n0")
-expand_mode = 5
-
-[node name="Bullet12" type="TextureRect" parent="Player/HUD/Bullet"]
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("4_s57n0")
-expand_mode = 5
+[node name="HUD" parent="Player" instance=ExtResource("4_npofv")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.880469, 0, 0.474104, 0, 1, 0, -0.474104, 0, 0.880469, 15, 2, -14)
+transform = Transform3D(1, 0, 0, 0, 0.984905, 0.173098, 0, -0.173098, 0.984905, 0.5, 2, 3.44)
 current = true
+fov = 74.6892
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("4_u3jc4")
@@ -234,7 +146,7 @@ transform = Transform3D(1.67395, 0, -1.09448, 0, 2, 0, 1.09448, 0, 1.67395, 2.40
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.828559, 0)
 collision_layer = 16
 collision_mask = 8
-script = ExtResource("8_82b6o")
+script = ExtResource("9_ifs8p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Items/target_small2/Small Target"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.000308633, 0.030732, 0.0973968)
@@ -247,7 +159,7 @@ transform = Transform3D(1.67395, 0, -1.09448, 0, 2, 0, 1.09448, 0, 1.67395, 6.99
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.828559, 0)
 collision_layer = 16
 collision_mask = 8
-script = ExtResource("8_82b6o")
+script = ExtResource("9_ifs8p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Items/target_small3/Small Target"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.000308633, 0.030732, 0.0973968)
@@ -263,7 +175,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.26543, 2.55434, -26.2537)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0086, 0.159964)
 collision_layer = 16
 collision_mask = 8
-script = ExtResource("8_82b6o")
+script = ExtResource("9_ifs8p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Items/target2/Target"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -276,7 +188,7 @@ transform = Transform3D(0.564088, 0, 0.825715, 0, 1, 0, -0.825715, 0, 0.564088, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 1.50402, 0.159965)
 collision_layer = 16
 collision_mask = 8
-script = ExtResource("8_82b6o")
+script = ExtResource("9_ifs8p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Items/target_stand_B2/Target"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -292,7 +204,7 @@ shape = SubResource("ConvexPolygonShape3D_snwo6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0086, 0.159964)
 collision_layer = 16
 collision_mask = 8
-script = ExtResource("8_82b6o")
+script = ExtResource("9_ifs8p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Items/target_wall_large_A/Target"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -305,7 +217,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3015, 0, -19.993)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.863144, 0.159964)
 collision_layer = 16
 collision_mask = 8
-script = ExtResource("8_82b6o")
+script = ExtResource("9_ifs8p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Items/target_small4/Target"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

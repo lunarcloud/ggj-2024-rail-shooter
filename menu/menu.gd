@@ -8,9 +8,11 @@ const toggle_sound : AudioStreamWAV = preload("res://addons/kenney_interface_sou
 const quit_sound : AudioStreamWAV = preload("res://addons/kenney_interface_sounds/minimize_003.wav")
 const play_sound : AudioStreamWAV = preload("res://addons/kenney_interface_sounds/confirmation_001.wav")
 const focus_sound : AudioStreamWAV = preload("res://addons/kenney_interface_sounds/glass_006.wav")
-const LEVEL_1 = preload("res://level/level1.tscn")
 const GAME_OVER : AudioStreamOggVorbis = preload("res://addons/kenney voiceover pack fighter/game_over.ogg")
 const YOU_WIN : AudioStreamOggVorbis = preload("res://addons/kenney voiceover pack fighter/you_win.ogg")
+
+const LEVEL_1 = preload("res://level/level1.tscn")
+const LEVEL_2 = preload("res://level2/level2.tscn")
 
 @onready
 var sfx : AudioStreamPlayer = $"Sfx"
@@ -33,6 +35,16 @@ func _process(_delta):
 
 
 func play():
+	play_level1()
+
+func play_level1() -> void:
+	play_level(LEVEL_1, play_level2)
+
+func play_level2() -> void:
+	play_level(LEVEL_2, game_over)
+
+
+func play_level(level: PackedScene, end_callback) -> void:
 	if _debounce:
 		return
 	_debounce = true
@@ -40,13 +52,20 @@ func play():
 	sfx.play(0)
 	level_transition_start.emit()
 	await get_tree().create_timer(0.5).timeout # give time
-	var level1 = LEVEL_1.instantiate()
-	level1.name = "current_level"
-	level1.level_complete.connect(game_over)
-	add_sibling(level1)
+	
+	var last_level = get_node_or_null("../current_level")
+	if is_instance_valid(last_level):
+		last_level.visible = false
+		last_level.get_parent().remove_child(last_level)
+		last_level.free() # using free directly to avoid error with multiple phantom cameras
+		
+	var instance = level.instantiate()
+	instance.name = "current_level"
+	instance.level_complete.connect(end_callback)
+	add_sibling(instance)
 	music.stop()
 	visible = false
-	level1.visible = true
+	instance.visible = true
 	level_transition_end.emit()
 	await get_tree().create_timer(0.5).timeout # give time
 	_debounce = false
@@ -91,6 +110,7 @@ func back_to_main() -> void:
 	level_transition_end.emit()
 	await get_tree().create_timer(0.5).timeout # give time
 	_debounce = false
+
 
 func _on_sinden_borders_toggled(toggled_on):
 	border_enabled.emit(toggled_on)
