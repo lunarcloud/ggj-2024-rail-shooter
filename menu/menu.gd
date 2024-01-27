@@ -20,8 +20,11 @@ var _debounce := false
 
 
 func _process(_delta):
-	if Input.is_action_pressed("quit"):
+	if Input.is_action_pressed("exit_to_desktop"):
 		quit()
+		
+	if Input.is_action_pressed("exit_to_menu"):
+		back_to_main()
 
 
 func play():
@@ -33,14 +36,33 @@ func play():
 	level_transition_start.emit()
 	await get_tree().create_timer(0.5).timeout # give time
 	var level1 = LEVEL_1.instantiate()
+	level1.name = "current_level"
 	add_sibling(level1)
 	music.stop()
 	visible = false
 	level1.visible = true
-	await get_tree().create_timer(0.5).timeout # give time
 	level_transition_end.emit()
+	await get_tree().create_timer(0.5).timeout # give time
 	_debounce = false
 
+func back_to_main() -> void:
+	if _debounce:
+		return
+	_debounce = true
+	sfx.stream = quit_sound
+	sfx.play(0)
+	level_transition_start.emit()
+	await get_tree().create_timer(0.5).timeout
+	var level_node = get_node_or_null("../current_level")
+	if is_instance_valid(level_node):
+		level_node.visible = false
+		level_node.queue_free()
+	music.play()
+	visible = true
+	level_transition_end.emit()
+	await get_tree().create_timer(0.5).timeout # give time
+	_debounce = false
+	
 
 func _on_sinden_borders_toggled(toggled_on):
 	border_enabled.emit(toggled_on)

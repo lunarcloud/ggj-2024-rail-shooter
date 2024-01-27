@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://chj0pgyxiko4l"]
+[gd_scene load_steps=15 format=3 uid="uid://chj0pgyxiko4l"]
 
-[ext_resource type="PackedScene" uid="uid://bgfunvfcwx42m" path="res://addons/kaykit_prototype_bits/Assets/gltf/Floor.gltf" id="1_qbf23"]
-[ext_resource type="PackedScene" uid="uid://b5y2ubrchv77r" path="res://addons/kaykit_prototype_bits/Assets/gltf/Barrel_A.gltf" id="2_7t8ao"]
+[ext_resource type="Script" path="res://level/level1.gd" id="1_8es4g"]
+[ext_resource type="Script" path="res://level/player.gd" id="1_gnn81"]
+[ext_resource type="AudioStream" uid="uid://cbtpokvpidwnl" path="res://level/Beat One.mp3" id="1_oj25m"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="3_a8cdm"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_u3jc4"]
+[ext_resource type="MeshLibrary" uid="uid://d038q44admb2h" path="res://addons/kaykit_prototype_bits/kaykit_proto.meshlib" id="5_0itso"]
 [ext_resource type="PackedScene" uid="uid://cth06yd5re42s" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_small.gltf" id="5_qias4"]
+[ext_resource type="Script" path="res://level/shot_target.gd" id="8_82b6o"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_j3s1d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o4qgp"]
 sky_top_color = Color(0.584314, 0.894118, 1, 1)
@@ -23,19 +27,49 @@ reflected_light_source = 1
 sdfgi_enabled = true
 fog_sky_affect = 0.5
 
+[sub_resource type="Resource" id="Resource_npb3s"]
+script = ExtResource("8_j3s1d")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0r26x"]
+height = 0.104286
+radius = 0.254659
+
 [node name="Level1" type="Node3D"]
+script = ExtResource("1_8es4g")
 
-[node name="Floor2" parent="." instance=ExtResource("1_qbf23")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.331236, 0, 0.690094)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j5hbc")
 
-[node name="Barrel_A2" parent="." instance=ExtResource("2_7t8ao")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.409332, 1.0921, -0.173463)
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_oj25m")
+autoplay = true
+bus = &"Music"
 
-[node name="PhantomCamera3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.442951, 1.60483, 3.44038)
+[node name="Player" type="Node3D" parent="."]
+script = ExtResource("1_gnn81")
+bullet_collision_mask = 16
+
+[node name="Sfx" type="AudioStreamPlayer" parent="Player"]
+bus = &"Effects"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984905, 0.173098, 0, -0.173098, 0.984905, 0.443, 2, 3.44)
+current = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+script = ExtResource("4_u3jc4")
+
+[node name="Shots" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Section1" type="Node3D" parent="Shots"]
+transform = Transform3D(1, 0, 0, 0, 0.984905, 0.173098, 0, -0.173098, 0.984905, 0.443, 0, 3.44)
 script = ExtResource("3_a8cdm")
 priority_override = false
-priority = 0
+priority = 1
 follow_mode = 0
 look_at_mode = 0
 tween_parameters = null
@@ -43,16 +77,44 @@ tween_on_load = true
 inactive_update_mode = 0
 camera_3D_resource = null
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.442951, 1.60483, 3.44038)
-current = true
-fov = 74.9862
+[node name="Section2" type="Node3D" parent="Shots"]
+transform = Transform3D(0.0317422, 0, -0.999496, 0, 1, 0, 0.999496, 0, 0.0317422, 2.173, 0, -9.68)
+script = ExtResource("3_a8cdm")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 0
+tween_parameters = SubResource("Resource_npb3s")
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
 
-[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
-script = ExtResource("4_u3jc4")
+[node name="Walls" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh_library = ExtResource("5_0itso")
+data = {
+"cells": PackedInt32Array(65535, 1, 1048641, 65535, 65535, 1048641, 65535, 65533, 1048642, 1, 1, 1048641, 1, 65533, 1048641, 1, 65535, 1441861, 0, 65530, 65, 2, 65530, 66, 4, 65530, 65, 2, 65532, 655425, 4, 65532, 655425, 6, 65532, 655425, 8, 65532, 655425, 9, 65531, 1048641, 9, 65529, 1441861, 5, 65529, 1441857, 0, 65528, 655425, 65535, 65527, 1048641, 65535, 65525, 1048641, 65535, 65523, 1048641, 65535, 65521, 1048641, 5, 65531, 1048606, 65535, 65531, 1048641, 9, 65527, 1048641, 9, 65525, 1048641, 9, 65523, 1048641, 9, 65521, 1048641, 2, 65528, 655425, 4, 65528, 655425, 7, 65522, 655386, 1, 65522, 655386, 1, 65526, 655386, 7, 65526, 655386, 0, 65521, 655384, 0, 65527, 655384)
+}
+
+[node name="Floors" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2.5, 1)
+mesh_library = ExtResource("5_0itso")
+cell_size = Vector3(4, 4, 4)
+data = {
+"cells": PackedInt32Array(0, 65533, 655378, 0, 65534, 655378, 0, 65535, 655378, 0, 0, 655378, 1, 65533, 655378, 2, 65533, 655378, 3, 65533, 655378, 4, 65533, 655378, 4, 65532, 655378, 3, 65532, 655378, 3, 65531, 655378, 4, 65531, 655378, 4, 65530, 655378, 3, 65530, 655378, 2, 65530, 655378, 2, 65531, 655378, 1, 65531, 655378, 0, 65531, 655378, 0, 65530, 655378, 0, 65529, 655378, 0, 65528, 655378, 1, 65528, 655378, 1, 65529, 655378, 1, 65530, 655378, 2, 65529, 655378, 2, 65528, 655378, 3, 65528, 655378, 4, 65528, 655378, 4, 65529, 655378, 3, 65529, 655378)
+}
 
 [node name="target_small2" parent="." instance=ExtResource("5_qias4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.764101, 0.425178, 0.647097)
+transform = Transform3D(1.67395, 0, -1.09448, 0, 2, 0, 1.09448, 0, 1.67395, 2.40198, -0.256066, -1.77345)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_j5hbc")
+[node name="Small Target" type="Area3D" parent="target_small2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.828559, 0)
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("8_82b6o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target_small2/Small Target"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.000308633, 0.030732, 0.0973968)
+shape = SubResource("CylinderShape3D_0r26x")
+
+[connection signal="target_shot" from="target_small2/Small Target" to="." method="_on_target_shot"]

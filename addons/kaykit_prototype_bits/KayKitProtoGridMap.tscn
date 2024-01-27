@@ -1,0 +1,292 @@
+[gd_scene load_steps=73 format=3 uid="uid://bl1yd5p77jlqx"]
+
+[ext_resource type="PackedScene" uid="uid://b5y2ubrchv77r" path="res://addons/kaykit_prototype_bits/Assets/gltf/Barrel_A.gltf" id="1_bm7hm"]
+[ext_resource type="PackedScene" uid="uid://chdmmid3negho" path="res://addons/kaykit_prototype_bits/Assets/gltf/Barrel_B.gltf" id="2_jbwql"]
+[ext_resource type="PackedScene" uid="uid://dgfk7h0o6633a" path="res://addons/kaykit_prototype_bits/Assets/gltf/Barrel_C.gltf" id="3_fioou"]
+[ext_resource type="PackedScene" uid="uid://b5363njuliplw" path="res://addons/kaykit_prototype_bits/Assets/gltf/Box_A.gltf" id="4_prk4m"]
+[ext_resource type="PackedScene" uid="uid://bsrllax0d76g3" path="res://addons/kaykit_prototype_bits/Assets/gltf/Box_B.gltf" id="5_sm3e2"]
+[ext_resource type="PackedScene" uid="uid://cjrag436yl4rx" path="res://addons/kaykit_prototype_bits/Assets/gltf/Box_C.gltf" id="6_4njbh"]
+[ext_resource type="PackedScene" uid="uid://de0pmhnrf18jb" path="res://addons/kaykit_prototype_bits/Assets/gltf/Can_A.gltf" id="7_snkyr"]
+[ext_resource type="PackedScene" uid="uid://bm5p4q7fjbibm" path="res://addons/kaykit_prototype_bits/Assets/gltf/Can_B.gltf" id="8_gadi0"]
+[ext_resource type="PackedScene" uid="uid://bs2odvf0owugh" path="res://addons/kaykit_prototype_bits/Assets/gltf/Coin_A.gltf" id="9_3lkw2"]
+[ext_resource type="PackedScene" uid="uid://b4x6v88830jwd" path="res://addons/kaykit_prototype_bits/Assets/gltf/Coin_B.gltf" id="10_i7gi7"]
+[ext_resource type="PackedScene" uid="uid://baxf7c18ihbug" path="res://addons/kaykit_prototype_bits/Assets/gltf/Coin_C.gltf" id="11_swgyb"]
+[ext_resource type="PackedScene" uid="uid://c66fvg5ut020" path="res://addons/kaykit_prototype_bits/Assets/gltf/Cube_Prototype_Large_A.gltf" id="12_rrb3n"]
+[ext_resource type="PackedScene" uid="uid://brhlx8w1fjol3" path="res://addons/kaykit_prototype_bits/Assets/gltf/Cube_Prototype_Large_B.gltf" id="13_f0et2"]
+[ext_resource type="PackedScene" uid="uid://b564ca2yegjta" path="res://addons/kaykit_prototype_bits/Assets/gltf/Cube_Prototype_Small.gltf" id="14_ag58g"]
+[ext_resource type="PackedScene" uid="uid://b4mpr214t18tv" path="res://addons/kaykit_prototype_bits/Assets/gltf/Door_A.gltf" id="15_jjele"]
+[ext_resource type="PackedScene" uid="uid://c6hs60pgsnqsm" path="res://addons/kaykit_prototype_bits/Assets/gltf/Door_A_Decorated.gltf" id="16_hvybn"]
+[ext_resource type="PackedScene" uid="uid://5frscqa3fsve" path="res://addons/kaykit_prototype_bits/Assets/gltf/Door_B.gltf" id="17_3riky"]
+[ext_resource type="PackedScene" uid="uid://cxe86tysjscpm" path="res://addons/kaykit_prototype_bits/Assets/gltf/Dummy_Base.gltf" id="18_xmwxt"]
+[ext_resource type="PackedScene" uid="uid://bgfunvfcwx42m" path="res://addons/kaykit_prototype_bits/Assets/gltf/Floor.gltf" id="19_tpigj"]
+[ext_resource type="PackedScene" uid="uid://c2ax4rfw4voab" path="res://addons/kaykit_prototype_bits/Assets/gltf/Floor_Dirt.gltf" id="20_q5oyx"]
+[ext_resource type="PackedScene" uid="uid://bjposmpm1ykww" path="res://addons/kaykit_prototype_bits/Assets/gltf/Floor_Prototype.gltf" id="21_gcctr"]
+[ext_resource type="PackedScene" uid="uid://boipshj1rhlty" path="res://addons/kaykit_prototype_bits/Assets/gltf/Pallet_Large.gltf" id="22_vrx0a"]
+[ext_resource type="PackedScene" uid="uid://3paym85n2o7m" path="res://addons/kaykit_prototype_bits/Assets/gltf/Pallet_Small.gltf" id="23_22yli"]
+[ext_resource type="PackedScene" uid="uid://hfmja11wtvaj" path="res://addons/kaykit_prototype_bits/Assets/gltf/Pallet_Small_Decorated_A.gltf" id="24_2ufhc"]
+[ext_resource type="PackedScene" uid="uid://jqngjswgwwe0" path="res://addons/kaykit_prototype_bits/Assets/gltf/Pallet_Small_Decorated_B.gltf" id="25_4lj4m"]
+[ext_resource type="PackedScene" uid="uid://su8ryuo2x5wd" path="res://addons/kaykit_prototype_bits/Assets/gltf/Pillar_A.gltf" id="26_o07cm"]
+[ext_resource type="PackedScene" uid="uid://b500f8uiub420" path="res://addons/kaykit_prototype_bits/Assets/gltf/Pillar_B.gltf" id="27_lf546"]
+[ext_resource type="PackedScene" uid="uid://c83jd4krcewj4" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Beam.gltf" id="28_808jy"]
+[ext_resource type="PackedScene" uid="uid://c4178cnmtddki" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Cube.gltf" id="29_rvuj1"]
+[ext_resource type="PackedScene" uid="uid://c1h6jh7xsj55v" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Cube_Small.gltf" id="30_r820t"]
+[ext_resource type="PackedScene" uid="uid://byy42vvj3t02s" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Doorway.gltf" id="31_nderv"]
+[ext_resource type="PackedScene" uid="uid://bhs54vlewihqk" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Floor.gltf" id="32_ds63b"]
+[ext_resource type="PackedScene" uid="uid://cw6xwqv1ei78n" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Floor_Hole.gltf" id="33_i33ct"]
+[ext_resource type="PackedScene" uid="uid://uvc3fv4ajqun" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Pillar.gltf" id="34_3k4da"]
+[ext_resource type="PackedScene" uid="uid://b5sa2wqaocpfb" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Slope.gltf" id="35_2jf0k"]
+[ext_resource type="PackedScene" uid="uid://m1wwumh0vrqt" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Slope_Half.gltf" id="36_w1pr3"]
+[ext_resource type="PackedScene" uid="uid://bbt0ynm5h4x3c" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Slope_Half_InnerCorner.gltf" id="37_btviq"]
+[ext_resource type="PackedScene" uid="uid://4qjhhb68v6k3" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Slope_Half_OuterCorner.gltf" id="38_h35pn"]
+[ext_resource type="PackedScene" uid="uid://cfeywajvy046e" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Slope_InnerCorner.gltf" id="39_fqv0t"]
+[ext_resource type="PackedScene" uid="uid://lbrih3jq5nuo" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Slope_OuterCorner.gltf" id="40_x4dwh"]
+[ext_resource type="PackedScene" uid="uid://dcqjll431rm88" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Stairs.gltf" id="41_x1lia"]
+[ext_resource type="PackedScene" uid="uid://dw7ft03o8drxx" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Stairs_Half.gltf" id="42_edk0y"]
+[ext_resource type="PackedScene" uid="uid://b7hnmmo83fnr8" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Wall.gltf" id="43_mkxkm"]
+[ext_resource type="PackedScene" uid="uid://b7vpcvbw56tvw" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Wall_Half.gltf" id="44_awqem"]
+[ext_resource type="PackedScene" uid="uid://cpdqfxepsnhkf" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Wall_OpenCorner.gltf" id="45_8v70t"]
+[ext_resource type="PackedScene" uid="uid://lc77gkjc42lr" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Wall_Short.gltf" id="46_p8tdn"]
+[ext_resource type="PackedScene" uid="uid://bouc11jpoa7qa" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Wall_Slope.gltf" id="47_oywpb"]
+[ext_resource type="PackedScene" uid="uid://y1bvj17fwrwb" path="res://addons/kaykit_prototype_bits/Assets/gltf/Primitive_Window.gltf" id="48_1in5v"]
+[ext_resource type="PackedScene" uid="uid://b6omi45g08nvi" path="res://addons/kaykit_prototype_bits/Assets/gltf/table_medium.gltf" id="49_bx6df"]
+[ext_resource type="PackedScene" uid="uid://cc3jipdyikred" path="res://addons/kaykit_prototype_bits/Assets/gltf/table_medium_Decorated.gltf" id="50_i2etu"]
+[ext_resource type="PackedScene" uid="uid://c00nt5x0p1o5" path="res://addons/kaykit_prototype_bits/Assets/gltf/table_medium_long.gltf" id="51_0ue1m"]
+[ext_resource type="PackedScene" uid="uid://57ajvyunmy8h" path="res://addons/kaykit_prototype_bits/Assets/gltf/target.gltf" id="52_8qseq"]
+[ext_resource type="PackedScene" uid="uid://bu6uct7yqunbx" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_pieces_A.gltf" id="53_r7a3f"]
+[ext_resource type="PackedScene" uid="uid://bibqx40ighhi0" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_pieces_B.gltf" id="54_vayis"]
+[ext_resource type="PackedScene" uid="uid://doo3s8aje638m" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_pieces_C.gltf" id="55_5ior8"]
+[ext_resource type="PackedScene" uid="uid://d2glj4xn3dcvb" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_pieces_D.gltf" id="56_x83ws"]
+[ext_resource type="PackedScene" uid="uid://dixw1fdicl4in" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_pieces_E.gltf" id="57_br4so"]
+[ext_resource type="PackedScene" uid="uid://f2wjx8wv10ke" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_pieces_F.gltf" id="58_xcxrg"]
+[ext_resource type="PackedScene" uid="uid://cth06yd5re42s" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_small.gltf" id="59_y00mt"]
+[ext_resource type="PackedScene" uid="uid://rgk6q2hlfqt2" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_stand_A.gltf" id="60_wjkhu"]
+[ext_resource type="PackedScene" uid="uid://bi6r5d4bwid87" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_stand_A_Decorated.gltf" id="61_utfqa"]
+[ext_resource type="PackedScene" uid="uid://cd328e2gs4hnn" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_stand_B.gltf" id="62_pwskh"]
+[ext_resource type="PackedScene" uid="uid://bsy2oafg1640l" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_wall_large_A.gltf" id="63_ma7lr"]
+[ext_resource type="PackedScene" uid="uid://7bf4y5cs15gt" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_wall_large_B.gltf" id="64_kroa2"]
+[ext_resource type="PackedScene" uid="uid://br7uiyfo3728h" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_wall_small.gltf" id="65_7p4pw"]
+[ext_resource type="PackedScene" uid="uid://c1k8f8pbv2drl" path="res://addons/kaykit_prototype_bits/Assets/gltf/Wall.gltf" id="66_ng20m"]
+[ext_resource type="PackedScene" uid="uid://cuyjuu4rbcsg2" path="res://addons/kaykit_prototype_bits/Assets/gltf/Wall_Decorated.gltf" id="67_mynlo"]
+[ext_resource type="PackedScene" uid="uid://fh0rpogemkv0" path="res://addons/kaykit_prototype_bits/Assets/gltf/Wall_Doorway.gltf" id="68_i64bt"]
+[ext_resource type="PackedScene" uid="uid://dibygds4e5qgr" path="res://addons/kaykit_prototype_bits/Assets/gltf/Wall_Half.gltf" id="69_l1xby"]
+[ext_resource type="PackedScene" uid="uid://cqm5yg85sw8ic" path="res://addons/kaykit_prototype_bits/Assets/gltf/Wall_Target.gltf" id="70_syuxx"]
+[ext_resource type="PackedScene" uid="uid://d10wfixcdjyj4" path="res://addons/kaykit_prototype_bits/Assets/gltf/Wall_Window_Closed.gltf" id="71_cj0r2"]
+[ext_resource type="PackedScene" uid="uid://bddbyfe3vrf2t" path="res://addons/kaykit_prototype_bits/Assets/gltf/Wall_Window_Open.gltf" id="72_whwki"]
+
+[node name="KayKitProtoGridMap" type="Node3D"]
+
+[node name="Barrel_A2" parent="." instance=ExtResource("1_bm7hm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Barrel_B2" parent="." instance=ExtResource("2_jbwql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Barrel_C2" parent="." instance=ExtResource("3_fioou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Box_A2" parent="." instance=ExtResource("4_prk4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Box_B2" parent="." instance=ExtResource("5_sm3e2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Box_C2" parent="." instance=ExtResource("6_4njbh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Can_A2" parent="." instance=ExtResource("7_snkyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Can_B2" parent="." instance=ExtResource("8_gadi0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Coin_A2" parent="." instance=ExtResource("9_3lkw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Coin_B2" parent="." instance=ExtResource("10_i7gi7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Coin_C2" parent="." instance=ExtResource("11_swgyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Cube_Prototype_Large_A2" parent="." instance=ExtResource("12_rrb3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Cube_Prototype_Large_B2" parent="." instance=ExtResource("13_f0et2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Cube_Prototype_Small2" parent="." instance=ExtResource("14_ag58g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Door_A2" parent="." instance=ExtResource("15_jjele")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Door_A_Decorated2" parent="." instance=ExtResource("16_hvybn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Door_B2" parent="." instance=ExtResource("17_3riky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Dummy_Base2" parent="." instance=ExtResource("18_xmwxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Floor2" parent="." instance=ExtResource("19_tpigj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Floor_Dirt2" parent="." instance=ExtResource("20_q5oyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Floor_Prototype2" parent="." instance=ExtResource("21_gcctr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Pallet_Large2" parent="." instance=ExtResource("22_vrx0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Pallet_Small2" parent="." instance=ExtResource("23_22yli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Pallet_Small_Decorated_A2" parent="." instance=ExtResource("24_2ufhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Pallet_Small_Decorated_B2" parent="." instance=ExtResource("25_4lj4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Pillar_A2" parent="." instance=ExtResource("26_o07cm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Pillar_B2" parent="." instance=ExtResource("27_lf546")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Beam2" parent="." instance=ExtResource("28_808jy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Cube2" parent="." instance=ExtResource("29_rvuj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Cube_Small2" parent="." instance=ExtResource("30_r820t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Doorway2" parent="." instance=ExtResource("31_nderv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Floor2" parent="." instance=ExtResource("32_ds63b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Floor_Hole2" parent="." instance=ExtResource("33_i33ct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Pillar2" parent="." instance=ExtResource("34_3k4da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Slope2" parent="." instance=ExtResource("35_2jf0k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Slope_Half2" parent="." instance=ExtResource("36_w1pr3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Slope_Half_InnerCorner2" parent="." instance=ExtResource("37_btviq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Slope_Half_OuterCorner2" parent="." instance=ExtResource("38_h35pn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Slope_InnerCorner2" parent="." instance=ExtResource("39_fqv0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Slope_OuterCorner2" parent="." instance=ExtResource("40_x4dwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Stairs2" parent="." instance=ExtResource("41_x1lia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Stairs_Half2" parent="." instance=ExtResource("42_edk0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Wall2" parent="." instance=ExtResource("43_mkxkm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Wall_Half2" parent="." instance=ExtResource("44_awqem")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Wall_OpenCorner2" parent="." instance=ExtResource("45_8v70t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Wall_Short2" parent="." instance=ExtResource("46_p8tdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Wall_Slope2" parent="." instance=ExtResource("47_oywpb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Primitive_Window2" parent="." instance=ExtResource("48_1in5v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="table_medium2" parent="." instance=ExtResource("49_bx6df")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="table_medium_Decorated2" parent="." instance=ExtResource("50_i2etu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="table_medium_long2" parent="." instance=ExtResource("51_0ue1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target2" parent="." instance=ExtResource("52_8qseq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target_pieces_A2" parent="." instance=ExtResource("53_r7a3f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target_pieces_B2" parent="." instance=ExtResource("54_vayis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target_pieces_C2" parent="." instance=ExtResource("55_5ior8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target_pieces_D2" parent="." instance=ExtResource("56_x83ws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target_pieces_E2" parent="." instance=ExtResource("57_br4so")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target_pieces_F2" parent="." instance=ExtResource("58_xcxrg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target_small2" parent="." instance=ExtResource("59_y00mt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target_stand_A2" parent="." instance=ExtResource("60_wjkhu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target_stand_A_Decorated2" parent="." instance=ExtResource("61_utfqa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target_stand_B2" parent="." instance=ExtResource("62_pwskh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target_wall_large_A2" parent="." instance=ExtResource("63_ma7lr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target_wall_large_B2" parent="." instance=ExtResource("64_kroa2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="target_wall_small2" parent="." instance=ExtResource("65_7p4pw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Wall2" parent="." instance=ExtResource("66_ng20m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Wall_Decorated2" parent="." instance=ExtResource("67_mynlo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Wall_Doorway2" parent="." instance=ExtResource("68_i64bt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Wall_Half2" parent="." instance=ExtResource("69_l1xby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Wall_Target2" parent="." instance=ExtResource("70_syuxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Wall_Window_Closed2" parent="." instance=ExtResource("71_cj0r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
+
+[node name="Wall_Window_Open2" parent="." instance=ExtResource("72_whwki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200234, 0, -0.517563)
