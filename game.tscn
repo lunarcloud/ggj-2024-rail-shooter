@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c13n2y5rwk81n"]
+
+[ext_resource type="PackedScene" uid="uid://df5ui71m4h2x3" path="res://sinden_border/sinden_border.tscn" id="1_qwrd2"]
+[ext_resource type="PackedScene" uid="uid://ctgi3nme7o3fj" path="res://menu/menu.tscn" id="2_5qn58"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nfgm"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_width_bottom = 40
+border_color = Color(1, 1, 1, 1)
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SindenBorder" parent="." instance=ExtResource("1_qwrd2")]
+visible = false
+layout_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nfgm")
+
+[node name="Menu" parent="." instance=ExtResource("2_5qn58")]
+layout_mode = 1
+
+[connection signal="border_enabled" from="Menu" to="SindenBorder" method="_on_border_toggled"]

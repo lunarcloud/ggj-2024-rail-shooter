@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://df5ui71m4h2x3"]
+
+[ext_resource type="Script" path="res://sinden_border/sinden_border.gd" id="1_6lg2q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dps7o"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_width_bottom = 40
+border_color = Color(1, 1, 1, 1)
+
+[node name="SindenBorder" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_dps7o")
+script = ExtResource("1_6lg2q")
