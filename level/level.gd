@@ -3,7 +3,7 @@ extends Node3D
 
 var current_section := 0
 var section_targets : Array[int] = []
-var section_cams : Array[PhantomCamera3D]
+var section_skip_time : Array[float] = []
 
 var level_is_complete := false
 signal level_complete
@@ -16,6 +16,9 @@ var hud : PlayerHUD = $"Player/HUD"
 
 @onready
 var player : Player = $"Player"
+
+@onready
+var shots : Node3D = $"Shots"
 
 @onready
 var sfx : AudioStreamPlayer = $"Player/Sfx"
@@ -49,19 +52,22 @@ func _on_target_shot():
 
 
 func update_camera() -> void:
-	if level_is_complete:
+	if level_is_complete or section_targets[current_section] > 0:
 		return
-
-	if section_targets[current_section] > 0:
-		return
-	section_cams[current_section].set_priority(0)
+	
+	shots.get_child(current_section).set_priority(0)
 	current_section += 1
-	if current_section >= section_cams.size() or not is_instance_valid(section_cams[current_section]):
+	
+	if not is_instance_valid(shots.get_child(current_section)):
 		complete_level()
 	else:
-		section_cams[current_section].set_priority(1)
+		shots.get_child(current_section).set_priority(1)
+		var targets := section_targets[current_section]
 		if section_targets[current_section] <= 0:
-			await get_tree().create_timer(1).timeout
+			var auto_time = 0.5
+			if current_section < section_skip_time.size() or section_skip_time[current_section] != null:
+				auto_time = section_skip_time[current_section]
+			await get_tree().create_timer(auto_time).timeout
 			update_camera()
 
 

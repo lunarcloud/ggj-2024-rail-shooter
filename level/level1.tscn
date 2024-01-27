@@ -28,7 +28,8 @@ sky = SubResource("Sky_xeoko")
 ambient_light_source = 2
 ambient_light_color = Color(0.690196, 0.690196, 0.690196, 1)
 reflected_light_source = 1
-sdfgi_enabled = true
+sdfgi_read_sky_light = false
+sdfgi_energy = 5.225
 fog_sky_affect = 0.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0r26x"]
@@ -65,7 +66,7 @@ bus = &"Voice"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984905, 0.173098, 0, -0.173098, 0.984905, 0.5, 2, 3.44)
 current = true
-fov = 74.6892
+fov = 74.9962
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("4_u3jc4")
