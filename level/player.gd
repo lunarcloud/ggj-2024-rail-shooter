@@ -3,6 +3,7 @@ extends Node3D
 const GUNFIRE = preload("res://addons/gunfire.wav")
 const GUNRELOAD_1 = preload("res://addons/gunreload1.wav")
 const GUNRELOAD_2 = preload("res://addons/gunreload2.wav")
+const EMPTYFIRE = preload("res://addons/kenney_interface_sounds/error_003.wav")
 
 @onready
 var sfx : AudioStreamPlayer = $"Sfx"
@@ -13,6 +14,11 @@ var bullet_collision_mask : int = 0
 var _debounce := false
 
 const RAY_LENGTH = 1000
+
+var bullets := 12
+
+signal shot_fired
+signal reloaded
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,9 +35,7 @@ func _process(_delta):
 
 	if Input.is_action_pressed("reload"):
 		_debounce = true
-		sfx.stream = GUNRELOAD_1 if randi() % 2 else GUNRELOAD_2
-		sfx.pitch_scale = randf_range(0.9, 1.4)
-		sfx.play(0)
+		_reload()
 	
 	if _debounce:
 		get_tree().create_timer(0.25).timeout.connect(_rearm_debounce)
@@ -43,9 +47,15 @@ func _rearm_debounce() -> void:
 
 func _shoot() -> void:
 	# Audio
-	sfx.stream = GUNFIRE
+	sfx.stream = GUNFIRE if bullets > 0 else EMPTYFIRE
 	sfx.pitch_scale = randf_range(0.9, 1.4)
 	sfx.play(0)
+	
+	if bullets <= 0:
+		return
+	bullets -= 1
+	
+	shot_fired.emit()
 	
 	# Raycast
 	var space_state = get_world_3d().direct_space_state
@@ -60,3 +70,15 @@ func _shoot() -> void:
 	var result = space_state.intersect_ray(query)
 	if not result.is_empty() and result.collider is ShotTarget:
 		result.collider.shoot()
+
+func _reload() -> void:
+	if bullets >= 12:
+		return
+	
+	# Audio
+	sfx.stream = GUNRELOAD_1 if randi() % 2 else GUNRELOAD_2
+	sfx.pitch_scale = randf_range(0.9, 1.4)
+	sfx.play(0)
+	
+	bullets = 12
+	reloaded.emit()
