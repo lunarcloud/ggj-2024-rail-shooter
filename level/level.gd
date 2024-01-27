@@ -58,11 +58,10 @@ func update_camera() -> void:
 	shots.get_child(current_section).set_priority(0)
 	current_section += 1
 	
-	if not is_instance_valid(shots.get_child(current_section)):
+	if shots.get_children().size() <= current_section or not is_instance_valid(shots.get_child(current_section)):
 		complete_level()
 	else:
 		shots.get_child(current_section).set_priority(1)
-		var targets := section_targets[current_section]
 		if section_targets[current_section] <= 0:
 			var auto_time = 0.5
 			if current_section < section_skip_time.size() or section_skip_time[current_section] != null:
