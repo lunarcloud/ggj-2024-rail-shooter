@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsc5xctxffds1"]
+[gd_scene load_steps=23 format=3 uid="uid://dsc5xctxffds1"]
 
 [ext_resource type="Script" path="res://level2/level2.gd" id="1_hhkaw"]
 [ext_resource type="AudioStream" uid="uid://sbkmh7lxlta6" path="res://level2/Goodnightmare.mp3" id="2_emeu6"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_gmqx4"]
 [ext_resource type="MeshLibrary" uid="uid://dqwjgvh4mo64s" path="res://addons/kaykit_city_builder_bits/kaykit_city.meshlib" id="7_32815"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="7_jgjij"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_xl54x"]
 [ext_resource type="Texture2D" uid="uid://hv7iltx1o8uy" path="res://butt_moon.png" id="10_2muta"]
+[ext_resource type="PackedScene" uid="uid://dmv5lkbo8ir16" path="res://wampire/wampire.tscn" id="10_f7sbg"]
 [ext_resource type="PackedScene" uid="uid://duj5jeby1qc44" path="res://werewolf/werewolf.tscn" id="11_c3ts4"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ha4wr"]
@@ -53,6 +55,12 @@ fog_density = 0.1
 fog_aerial_perspective = 0.5
 fog_sky_affect = 0.0
 
+[sub_resource type="Resource" id="Resource_r7bax"]
+script = ExtResource("7_xl54x")
+duration = 1.0
+transition = 0
+ease = 2
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_24eax"]
 transparency = 1
 shading_mode = 0
@@ -65,6 +73,87 @@ billboard_mode = 1
 [sub_resource type="QuadMesh" id="QuadMesh_uh0l6"]
 material = SubResource("StandardMaterial3D_24eax")
 size = Vector2(30, 20)
+
+[sub_resource type="Animation" id="Animation_bami2"]
+resource_name = "Attack"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-5.69838, 0.625195, -35.3883), Vector3(-1.32995, 3.66777, -31.974), Vector3(-0.8142, 3.18891, -31.5086)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 2.2628, 0), Vector3(0.276802, 2.28253, 0.0051455)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"introduce"
+}, {
+"args": [],
+"method": &"ready_to_fire"
+}, {
+"args": [],
+"method": &"firing_fingerguns"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6i32s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.69838, 0.625195, -35.3883)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wh870"]
+_data = {
+"Attack": SubResource("Animation_bami2"),
+"RESET": SubResource("Animation_6i32s")
+}
 
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_hhkaw")
@@ -93,7 +182,7 @@ bus = &"Voice"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71221, 0.906362, 0)
 current = true
-fov = 73.8417
+fov = 74.1348
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("6_gmqx4")
@@ -173,6 +262,56 @@ tween_on_load = true
 inactive_update_mode = 0
 camera_3D_resource = null
 
+[node name="Section7" type="Node3D" parent="Shots"]
+transform = Transform3D(0.965925, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 22.0209, -0.698638, -31.6824)
+script = ExtResource("7_jgjij")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="Section8" type="Node3D" parent="Shots"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -0.999999, 0, -4.37114e-08, 21.6803, -0.698638, -33.7764)
+script = ExtResource("7_jgjij")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="Section9" type="Node3D" parent="Shots"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.43367, -0.979805, -34.1796)
+script = ExtResource("7_jgjij")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="Section10" type="Node3D" parent="Shots"]
+transform = Transform3D(0.147013, 0, 0.989135, 0, 1, 0, -0.989134, 0, 0.147013, 2.43367, -0.979805, -34.1796)
+script = ExtResource("7_jgjij")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 2
+look_at_target = NodePath("../../Targets/Wampire")
+look_at_parameters/look_at_target_offset = Vector3(0, 0, 0)
+tween_parameters = SubResource("Resource_r7bax")
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
 [node name="Walls" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.125, 0)
 mesh_library = ExtResource("7_32815")
@@ -185,7 +324,7 @@ mesh_library = ExtResource("7_32815")
 cell_size = Vector3(1, 1, 1)
 cell_scale = 2.0
 data = {
-"cells": PackedInt32Array(3, 65524, 1441829, 0, 65523, 655397, 3, 65520, 37, 0, 65520, 1048613, 0, 65532, 24, 3, 65517, 655383, 0, 65510, 25, 10, 65500, 1441813, 20, 65507, 21, 23, 65517, 655384, 65531, 65520, 1441814, 65528, 65520, 1441814, 65534, 65520, 1441818, 65533, 65521, 1441818, 65533, 65522, 1048602, 65534, 65523, 1048602, 65535, 65522, 22, 65535, 65520, 22)
+"cells": PackedInt32Array(3, 65524, 1441829, 0, 65523, 655397, 3, 65520, 37, 0, 65520, 1048613, 0, 65532, 24, 3, 65517, 655383, 0, 65510, 25, 10, 65500, 1441813, 20, 65507, 21, 23, 65517, 655384, 65531, 65520, 1441814, 65528, 65520, 1441814, 65534, 65520, 1441818, 65533, 65521, 1441818, 65533, 65522, 1048602, 65534, 65523, 1048602, 65535, 65522, 22, 65535, 65520, 22, 3, 65503, 36, 0, 65500, 655396, 3, 65497, 26, 1, 65498, 26, 0, 65496, 26, 2, 65496, 26, 1, 65494, 1441814, 3, 65506, 655381, 65529, 65500, 1441816, 65517, 65500, 1441817, 65532, 65503, 1048599, 2, 65498, 1048578, 1, 65496, 1048578, 65535, 65497, 1048578, 4, 65499, 1048578, 7, 65499, 1048578, 6, 65499, 1048578, 4, 65498, 1048579)
 }
 
 [node name="Floors" type="GridMap" parent="."]
@@ -216,9 +355,19 @@ transform = Transform3D(0.671721, 0, 0.740805, 0, 1, 0, -0.740805, 0, 0.671721, 
 [node name="Werewolf4" parent="Targets" instance=ExtResource("11_c3ts4")]
 transform = Transform3D(0.909838, 0, -0.414963, 0, 1, 0, 0.414963, 0, 0.909838, 24.383, 0, -23.677)
 
+[node name="Wampire" parent="Targets" instance=ExtResource("10_f7sbg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.69838, 0.625195, -35.3883)
+
+[node name="WampireAttackAnim" type="AnimationPlayer" parent="Targets/Wampire"]
+libraries = {
+"": SubResource("AnimationLibrary_wh870")
+}
+
+[connection signal="section_update" from="." to="." method="_on_section_update"]
 [connection signal="reloaded" from="Player" to="Player/HUD" method="_on_player_reloaded"]
 [connection signal="shot_fired" from="Player" to="Player/HUD" method="_on_player_shot_fired"]
 [connection signal="target_shot" from="Targets/Werewolf" to="." method="_on_target_shot"]
 [connection signal="target_shot" from="Targets/Werewolf2" to="." method="_on_target_shot"]
 [connection signal="target_shot" from="Targets/Werewolf3" to="." method="_on_target_shot"]
 [connection signal="target_shot" from="Targets/Werewolf4" to="." method="_on_target_shot"]
+[connection signal="target_shot" from="Targets/Wampire" to="." method="_on_target_shot"]

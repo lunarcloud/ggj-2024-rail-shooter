@@ -1,0 +1,473 @@
+[gd_scene load_steps=19 format=3 uid="uid://dmv5lkbo8ir16"]
+
+[ext_resource type="Script" path="res://wampire/wampire.gd" id="1_bigj7"]
+[ext_resource type="Script" path="res://shot_target.gd" id="2_rrgbd"]
+[ext_resource type="Texture2D" uid="uid://qfv7p80rw5gy" path="res://wampire/sprites/head1.png" id="3_3faxp"]
+[ext_resource type="Texture2D" uid="uid://cc1pk7urxmm7e" path="res://sunglasses.png" id="4_2ro82"]
+[ext_resource type="Texture2D" uid="uid://vi23xnu3qut8" path="res://wampire/sprites/cloaked/front.png" id="5_3f7uf"]
+[ext_resource type="Texture2D" uid="uid://skglw77le223" path="res://wampire/sprites/head2.png" id="5_4fl5s"]
+[ext_resource type="Texture2D" uid="uid://dm7asw617yal1" path="res://wampire/sprites/cloaked/back.png" id="6_ercnr"]
+[ext_resource type="Texture2D" uid="uid://wqeuvvgnoe57" path="res://wampire/sprites/ready/front.png" id="8_xxew1"]
+[ext_resource type="Texture2D" uid="uid://wxci4jy2cp0k" path="res://wampire/sprites/ready/back.png" id="9_evo1q"]
+[ext_resource type="Texture2D" uid="uid://bspma5vh3uma0" path="res://wampire/sprites/fingerguns/front.png" id="10_ufe8r"]
+[ext_resource type="Texture2D" uid="uid://c3hcu20plnj1s" path="res://wampire/sprites/fingerguns/back.png" id="11_upqi4"]
+
+[sub_resource type="Animation" id="Animation_rqy7w"]
+resource_name = "Cloaked"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/HeadGroup1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/HeadGroup2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/Cloaked:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprites/Ready:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprites/Fingerguns:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_om5s7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/Cloaked:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/HeadGroup1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/HeadGroup2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprites/Ready:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprites/Fingerguns:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_q6nqw"]
+resource_name = "Fingerguns"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/HeadGroup1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/HeadGroup2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/Cloaked:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprites/Ready:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprites/Fingerguns:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tcx42"]
+resource_name = "Ready"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/HeadGroup1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/HeadGroup2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/Cloaked:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprites/Ready:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprites/Fingerguns:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_mpr0r"]
+resource_name = "Shot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/HeadGroup1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/HeadGroup2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/Cloaked:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprites/Ready:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprites/Fingerguns:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Sprites:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 12.5664, 0), Vector3(-1.0472, 13.2645, 0), Vector3(-1.5708, 13.6136, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Sprites:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.228363, 0), Vector3(0, 0, -0.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p36ip"]
+_data = {
+"Cloaked": SubResource("Animation_rqy7w"),
+"Fingerguns": SubResource("Animation_q6nqw"),
+"RESET": SubResource("Animation_om5s7"),
+"Ready": SubResource("Animation_tcx42"),
+"Shot": SubResource("Animation_mpr0r")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_imc8f"]
+radius = 0.194619
+height = 0.980375
+
+[node name="Wampire" type="Node3D"]
+script = ExtResource("1_bigj7")
+
+[node name="AudioVoice" type="AudioStreamPlayer3D" parent="."]
+bus = &"Voice"
+
+[node name="Target" type="Area3D" parent="."]
+transform = Transform3D(0.836976, 0, -0.54724, 0, 1, 0, 0.54724, 0, 0.836976, 0, 0.467051, 0)
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("2_rrgbd")
+hits = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Target"]
+libraries = {
+"": SubResource("AnimationLibrary_p36ip")
+}
+autoplay = "Cloaked"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Target"]
+shape = SubResource("CapsuleShape3D_imc8f")
+
+[node name="Sprites" type="Node3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.228363, 0)
+
+[node name="HeadGroup1" type="Node3D" parent="Sprites"]
+
+[node name="Head1" type="Sprite3D" parent="Sprites/HeadGroup1"]
+transform = Transform3D(1, 0, 0, 0, 0.997564, 0.0697565, 0, -0.0697565, 0.997564, 0.0176886, 2.13443, 0)
+pixel_size = 0.001
+shaded = true
+render_priority = 3
+texture = ExtResource("3_3faxp")
+
+[node name="Sunglasses" type="Sprite3D" parent="Sprites/HeadGroup1"]
+transform = Transform3D(1, 0, 0, 0, 0.926049, -0.377405, 0, 0.377405, 0.926049, 0.000347957, 2.07811, 0.0459816)
+pixel_size = 0.001
+shaded = true
+render_priority = 4
+texture = ExtResource("4_2ro82")
+
+[node name="HeadGroup2" type="Node3D" parent="Sprites"]
+visible = false
+
+[node name="Head2" type="Sprite3D" parent="Sprites/HeadGroup2"]
+transform = Transform3D(1, 0, 0, 0, 0.997564, 0.0697565, 0, -0.0697565, 0.997564, 0.0192969, 2.30898, 0)
+pixel_size = 0.001
+shaded = true
+render_priority = 3
+texture = ExtResource("5_4fl5s")
+
+[node name="Sunglasses" type="Sprite3D" parent="Sprites/HeadGroup2"]
+transform = Transform3D(0.98796, 0.154334, 0.010792, -0.109397, 0.746217, -0.656653, -0.109397, 0.647566, 0.754116, -0.0244593, 2.40403, 0.0459816)
+pixel_size = 0.0007
+shaded = true
+render_priority = 4
+texture = ExtResource("4_2ro82")
+
+[node name="Cloaked" type="Node3D" parent="Sprites"]
+
+[node name="Front" type="Sprite3D" parent="Sprites/Cloaked"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.649435, 0)
+pixel_size = 0.001
+shaded = true
+render_priority = 2
+texture = ExtResource("5_3f7uf")
+
+[node name="Back" type="Sprite3D" parent="Sprites/Cloaked"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.719868, 0)
+pixel_size = 0.001
+shaded = true
+texture = ExtResource("6_ercnr")
+
+[node name="Ready" type="Node3D" parent="Sprites"]
+visible = false
+
+[node name="Front" type="Sprite3D" parent="Sprites/Ready"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.612424, 0)
+pixel_size = 0.001
+shaded = true
+render_priority = 2
+texture = ExtResource("8_xxew1")
+
+[node name="Back" type="Sprite3D" parent="Sprites/Ready"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6625, 0)
+pixel_size = 0.001
+shaded = true
+texture = ExtResource("9_evo1q")
+
+[node name="Fingerguns" type="Node3D" parent="Sprites"]
+visible = false
+
+[node name="Front" type="Sprite3D" parent="Sprites/Fingerguns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788144, 0)
+pixel_size = 0.001
+shaded = true
+render_priority = 2
+texture = ExtResource("10_ufe8r")
+
+[node name="Back" type="Sprite3D" parent="Sprites/Fingerguns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18704, 0)
+pixel_size = 0.001
+shaded = true
+texture = ExtResource("11_upqi4")
+
+[connection signal="target_hurt" from="Target" to="." method="_on_target_hurt"]
+[connection signal="target_shot" from="Target" to="." method="_on_target_shot"]

@@ -8,6 +8,7 @@ var section_skip_time : Array[float] = []
 var level_is_complete := false
 signal level_complete
 signal level_failed
+signal section_update(section: int)
 
 @export_range(3, 12)
 var total_bullets := 12
@@ -78,6 +79,7 @@ func update_camera() -> void:
 	
 	shots.get_child(current_section).set_priority(0)
 	current_section += 1
+	section_update.emit(current_section)
 	
 	if shots.get_children().size() <= current_section or not is_instance_valid(shots.get_child(current_section)):
 		complete_level()
