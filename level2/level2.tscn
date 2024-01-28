@@ -73,6 +73,7 @@ size = Vector2(30, 20)
 
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_hhkaw")
+level_timeout_seconds = 30.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5hj7s")
@@ -97,7 +98,7 @@ bus = &"Voice"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71221, 0.906362, 0)
 current = true
-fov = 74.0285
+fov = 74.4234
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("6_gmqx4")

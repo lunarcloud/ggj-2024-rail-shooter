@@ -10,6 +10,7 @@ const play_sound : AudioStreamWAV = preload("res://addons/kenney_interface_sound
 const focus_sound : AudioStreamWAV = preload("res://addons/kenney_interface_sounds/glass_006.wav")
 const GAME_OVER : AudioStreamOggVorbis = preload("res://addons/kenney voiceover pack fighter/game_over.ogg")
 const YOU_WIN : AudioStreamOggVorbis = preload("res://addons/kenney voiceover pack fighter/you_win.ogg")
+const YOU_LOSE : AudioStreamOggVorbis = preload("res://addons/kenney voiceover pack/voice type 2/you_lose.ogg")
 
 const LEVEL_1 = preload("res://level/level1.tscn")
 const LEVEL_2 = preload("res://level2/level2.tscn")
@@ -62,6 +63,7 @@ func play_level(level: PackedScene, end_callback) -> void:
 	var instance = level.instantiate()
 	instance.name = "current_level"
 	instance.level_complete.connect(end_callback)
+	instance.level_failed.connect(func(): game_over(false))
 	add_sibling(instance)
 	music.stop()
 	visible = false
@@ -71,7 +73,7 @@ func play_level(level: PackedScene, end_callback) -> void:
 	_debounce = false
 
 
-func game_over() -> void:
+func game_over(succeed: = true) -> void:
 	if _debounce:
 		return
 	_debounce = true
@@ -83,7 +85,7 @@ func game_over() -> void:
 	if is_instance_valid(level_node):
 		level_node.visible = false
 		level_node.queue_free()
-	voice.stream = YOU_WIN
+	voice.stream = YOU_WIN if succeed else YOU_LOSE
 	voice.play(0)
 	await voice.finished
 	music.play()

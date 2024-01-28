@@ -43,6 +43,7 @@ points = PackedVector3Array(-1.01587, -1.01587, -0.115851, 0.958011, 0.958011, 0
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_8es4g")
 total_bullets = 3
+level_timeout_seconds = 20.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j5hbc")
@@ -67,6 +68,7 @@ bus = &"Voice"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984905, 0.173098, 0, -0.173098, 0.984905, 0.5, 2, 3.44)
 current = true
+fov = 73.8607
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("4_u3jc4")
