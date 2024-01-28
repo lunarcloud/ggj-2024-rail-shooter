@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://duj5jeby1qc44"]
+[gd_scene load_steps=15 format=3 uid="uid://duj5jeby1qc44"]
 
+[ext_resource type="Script" path="res://shot_target_anim_handler.gd" id="1_cv783"]
 [ext_resource type="Texture2D" uid="uid://dt0heseephap3" path="res://werewolf/head.png" id="1_pid8g"]
 [ext_resource type="Texture2D" uid="uid://cc1pk7urxmm7e" path="res://sunglasses.png" id="2_8mh7t"]
 [ext_resource type="Texture2D" uid="uid://dsuwslxlkt04o" path="res://werewolf/torso.png" id="3_cmsaj"]
@@ -7,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dahiiutmbl3ig" path="res://werewolf/arm-right.png" id="5_jepul"]
 [ext_resource type="Texture2D" uid="uid://dl4hdri7d8tsc" path="res://werewolf/leg-left.png" id="6_hibv3"]
 [ext_resource type="Texture2D" uid="uid://epa0ys4l3vkt" path="res://werewolf/leg-right.png" id="7_pmkln"]
+[ext_resource type="Script" path="res://shot_target.gd" id="9_5die8"]
 
 [sub_resource type="Animation" id="Animation_pbtq6"]
 resource_name = "idle"
@@ -133,7 +135,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, -0.166103)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -145,7 +147,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.07367, 1.12605, 0)]
+"values": [Vector3(-0.94755, 1.06871, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -157,7 +159,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.00047, 1.14965, 0)]
+"values": [Vector3(0.928551, 1.07902, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -169,28 +171,216 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0.118839)]
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.0698132, 0, 0), Vector3(-0.174533, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprites/LegLeft:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.411532, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprites/LegLeft:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.0286768)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sprites/LegRight:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.343939, 0.190261, 1.19209e-07)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sprites/LegRight:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.00995273)]
+}
+
+[sub_resource type="Animation" id="Animation_0dt88"]
+resource_name = "Shot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Head:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.0667332, -0.0174533, -0.0329559), Vector3(-0.523599, -0.0174533, -0.015708)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/ArmLeft:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ArmRight:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/LegLeft:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.0286768)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/LegRight:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.00995273)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.49266, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprites/ArmLeft:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.94755, 1.06871, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprites/ArmRight:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.928551, 1.07902, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q1pm1"]
 _data = {
 "RESET": SubResource("Animation_pvybp"),
+"Shot": SubResource("Animation_0dt88"),
 "idle": SubResource("Animation_pbtq6")
 }
 
-[node name="Werewolf" type="Node3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ij703"]
+radius = 0.194619
+height = 0.980375
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Werewolf" type="Node3D"]
+script = ExtResource("1_cv783")
+
+[node name="Target" type="Area3D" parent="."]
+transform = Transform3D(0.836976, 0, -0.54724, 0, 1, 0, 0.54724, 0, 0.836976, 0, 0.467051, 0)
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("9_5die8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Target"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_q1pm1")
 }
 autoplay = "idle"
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Target"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ij703")
+
 [node name="Sprites" type="Node3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.207411, 0)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.228363, 0)
 
 [node name="Head" type="Sprite3D" parent="Sprites"]
-transform = Transform3D(0.990107, -0.139225, -0.0174273, 0.138121, 0.988964, -0.0536061, 0.0246983, 0.0506688, 0.99841, 0.0950588, 2.34858, 0)
+transform = Transform3D(1, 0, 0, 0, 0.997564, 0.0697565, 0, -0.0697565, 0.997564, 0.0950077, 2.26381, 0)
 pixel_size = 0.001
 shaded = true
 render_priority = 3
@@ -211,27 +401,29 @@ render_priority = 2
 texture = ExtResource("3_cmsaj")
 
 [node name="ArmLeft" type="Sprite3D" parent="Sprites"]
-transform = Transform3D(0.986237, 0.16534, 0, -0.16534, 0.986237, 0, 0, 0, 1, -1.07367, 1.12605, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94755, 1.06871, 0)
 pixel_size = 0.001
 shaded = true
 render_priority = 1
 texture = ExtResource("4_np7x0")
 
 [node name="ArmRight" type="Sprite3D" parent="Sprites"]
-transform = Transform3D(0.992947, -0.11856, 0, 0.11856, 0.992947, 0, 0, 0, 1, 1.00047, 1.14965, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.928551, 1.07902, 0)
 pixel_size = 0.001
 shaded = true
 render_priority = 1
 texture = ExtResource("5_jepul")
 
 [node name="LegLeft" type="Sprite3D" parent="Sprites"]
-transform = Transform3D(0.999589, -0.0286729, 0, 0.0286729, 0.999589, 0, 0, 0, 1, -0.412952, 0.0306145, 0)
+transform = Transform3D(0.999589, -0.0286729, 0, 0.0286729, 0.999588, 0, 0, 0, 1, -0.411532, 0, 0)
 pixel_size = 0.001
 shaded = true
 texture = ExtResource("6_hibv3")
 
 [node name="LegRight" type="Sprite3D" parent="Sprites"]
-transform = Transform3D(0.99995, -0.00995257, 0, 0.00995257, 0.99995, 0, 0, 0, 1, 0.362003, 0.242462, 0)
+transform = Transform3D(0.99995, -0.00995256, 0, 0.00995257, 0.99995, 0, 0, 0, 1, 0.343939, 0.190261, 1.19209e-07)
 pixel_size = 0.001
 shaded = true
 texture = ExtResource("7_pmkln")
+
+[connection signal="target_shot" from="Target" to="." method="_on_target_shot"]
