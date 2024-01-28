@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://brj7flnlckgbq"
+path="res://.godot/imported/Fright Night Twist.mp3-83bf3f2afb68fbbf4e243b5a31eb1136.mp3str"
+
+[deps]
+
+source_file="res://level2/Fright Night Twist.mp3"
+dest_files=["res://.godot/imported/Fright Night Twist.mp3-83bf3f2afb68fbbf4e243b5a31eb1136.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

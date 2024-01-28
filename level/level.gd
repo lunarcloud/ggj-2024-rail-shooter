@@ -11,7 +11,7 @@ signal level_failed
 signal section_update(section: int)
 
 @export_range(3, 12)
-var total_bullets := 12
+var total_bullets := 6
 
 @export_range(15.0, 90.0)
 var level_timeout_seconds := 40.0
@@ -79,7 +79,7 @@ func update_camera() -> void:
 	
 	shots.get_child(current_section).set_priority(0)
 	current_section += 1
-	section_update.emit(current_section)
+	section_update.emit(current_section+1)
 	
 	if shots.get_children().size() <= current_section or not is_instance_valid(shots.get_child(current_section)):
 		complete_level()

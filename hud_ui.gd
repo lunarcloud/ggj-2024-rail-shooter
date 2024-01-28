@@ -19,7 +19,7 @@ func set_targets(targets: int) -> void:
 	targets_label.text = "%d" % targets
 
 
-func set_bullets(total_bullets: int = 12) -> void:
+func set_bullets(total_bullets: int) -> void:
 	var bullet_template := bullet_box.get_child(0)
 	for i in range(total_bullets - 1):
 		var bullet = bullet_template.duplicate()
@@ -32,6 +32,7 @@ func _on_player_shot_fired():
 		if bullet.visible:
 			bullet.visible = false
 			return
+
 
 func _on_player_reloaded():
 	var bullets := bullet_box.get_children()

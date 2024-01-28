@@ -76,7 +76,8 @@ size = Vector2(30, 20)
 
 [sub_resource type="Animation" id="Animation_bami2"]
 resource_name = "Attack"
-length = 6.0
+length = 25.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -84,10 +85,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1.5, 2.4, 2.6, 6.8, 7.4, 8.5, 13.8, 14, 14.8, 17.8, 21, 23.6, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-5.69838, 0.625195, -35.3883), Vector3(-1.32995, 3.66777, -31.974), Vector3(-0.8142, 3.18891, -31.5086)]
+"values": [Vector3(-5.698, 0.625, -35.388), Vector3(-5.698, 0.625, -35.388), Vector3(-1.32995, 3.66777, -31.974), Vector3(-0.8142, 3.18891, -31.5086), Vector3(-0.8142, 3.18891, -31.5086), Vector3(-0.369338, 3.84692, -32.4947), Vector3(0.965246, 1.91248, -35.4532), Vector3(0.965, 1.912, -35.453), Vector3(1.5164, 2.46566, -35.7222), Vector3(3.722, 0.056, -36.799), Vector3(3.722, 0.056, -36.799), Vector3(4.722, 0.056, -33.799), Vector3(3.722, 0.0560001, -36.799), Vector3(3.722, 2, -36.799)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -96,10 +97,10 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1.5, 2.4, 2.6, 6.8, 7.9, 8.5, 13.8, 14, 14.8, 17.8, 18, 21, 23.6, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.5708, 0), Vector3(0, 2.2628, 0), Vector3(0.276802, 2.28253, 0.0051455)]
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0), Vector3(0, 2.2628, 0), Vector3(0.276802, 2.28253, 0.0051455), Vector3(0.276802, 2.28253, 0.0051455), Vector3(0.242601, 6.28319, 0.0279253), Vector3(0.20944, 0.774926, 0.0523599), Vector3(0.20944, 0.774926, 0.0523599), Vector3(0.167552, 6.28319, 0.0418879), Vector3(0, -0.305433, 0), Vector3(0, -0.305433, 0), Vector3(0, -0.829031, 0), Vector3(0, -2.11933, 0), Vector3(0, -0.305432, 0), Vector3(0, 6.28319, 0)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -108,8 +109,8 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(2.1, 2.6, 2.9, 6.3, 9.5, 10.2, 12.9, 16.6, 17.4, 23.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"introduce"
@@ -119,6 +120,27 @@ tracks/2/keys = {
 }, {
 "args": [],
 "method": &"firing_fingerguns"
+}, {
+"args": [],
+"method": &"idle"
+}, {
+"args": [],
+"method": &"ready_to_fire"
+}, {
+"args": [],
+"method": &"firing_fingerguns"
+}, {
+"args": [],
+"method": &"idle"
+}, {
+"args": [],
+"method": &"ready_to_fire"
+}, {
+"args": [],
+"method": &"firing_fingerguns"
+}, {
+"args": [],
+"method": &"idle"
 }]
 }
 
@@ -157,7 +179,7 @@ _data = {
 
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_hhkaw")
-level_timeout_seconds = 30.0
+level_timeout_seconds = 60.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5hj7s")
@@ -170,6 +192,7 @@ bus = &"Music"
 [node name="Player" type="Node3D" parent="."]
 script = ExtResource("3_dout2")
 bullet_collision_mask = 16
+total_bullets = 6
 
 [node name="Sfx" type="AudioStreamPlayer" parent="Player"]
 bus = &"Effects"
@@ -182,7 +205,7 @@ bus = &"Voice"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71221, 0.906362, 0)
 current = true
-fov = 74.1348
+fov = 74.0508
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("6_gmqx4")
@@ -299,7 +322,7 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Section10" type="Node3D" parent="Shots"]
-transform = Transform3D(0.147013, 0, 0.989135, 0, 1, 0, -0.989134, 0, 0.147013, 2.43367, -0.979805, -34.1796)
+transform = Transform3D(0.146986, -2.34797e-05, 0.989139, 0, 1, 2.37376e-05, -0.989138, -3.48909e-06, 0.146986, 2.43367, -0.979805, -34.1796)
 script = ExtResource("7_jgjij")
 priority_override = false
 priority = 0
@@ -371,3 +394,4 @@ libraries = {
 [connection signal="target_shot" from="Targets/Werewolf3" to="." method="_on_target_shot"]
 [connection signal="target_shot" from="Targets/Werewolf4" to="." method="_on_target_shot"]
 [connection signal="target_shot" from="Targets/Wampire" to="." method="_on_target_shot"]
+[connection signal="target_shot" from="Targets/Wampire" to="." method="_on_wampire_target_shot"]

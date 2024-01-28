@@ -32,18 +32,22 @@ func _on_target_shot():
 
 
 func introduce() -> void:
-	audio.stream = HANDLE_FINGERGUNS
-	audio.play(0)
+	if is_instance_valid(audio):
+		audio.stream = HANDLE_FINGERGUNS
+		audio.play(0)
 
 
 func ready_to_fire() -> void:
-	anim.play("Ready")
+	if is_instance_valid(anim):
+		anim.play("Ready")
 
 
 func firing_fingerguns() -> void:
-	anim.play("Fingerguns")
+	if is_instance_valid(anim):
+		anim.play("Fingerguns")
 
 
 func idle() -> void:
-	anim.play("Cloaked")
+	if is_instance_valid(anim):
+		anim.play("Cloaked")
 

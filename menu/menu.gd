@@ -36,7 +36,7 @@ func _process(_delta):
 
 
 func play():
-	play_level2()
+	play_level1()
 
 func play_level1() -> void:
 	play_level(LEVEL_1, play_level2)

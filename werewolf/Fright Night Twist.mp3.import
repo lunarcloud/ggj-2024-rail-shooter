@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://doj3jk68127tc"
+path="res://.godot/imported/Fright Night Twist.mp3-44c696d2a06eceae7609313726fbff0f.mp3str"
+
+[deps]
+
+source_file="res://werewolf/Fright Night Twist.mp3"
+dest_files=["res://.godot/imported/Fright Night Twist.mp3-44c696d2a06eceae7609313726fbff0f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
