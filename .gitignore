@@ -1,6 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 addons/phantom_camera/examples/
-.png~
-.txt~
-.jpg~
+*.png~
+*.txt~
+*.jpg~
+*.kra~
+export/cool_shoot.*

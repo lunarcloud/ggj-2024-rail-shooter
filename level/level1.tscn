@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://chj0pgyxiko4l"]
+[gd_scene load_steps=20 format=3 uid="uid://chj0pgyxiko4l"]
 
 [ext_resource type="Script" path="res://level/level1.gd" id="1_8es4g"]
 [ext_resource type="AudioStream" uid="uid://cbtpokvpidwnl" path="res://level/Beat One.mp3" id="1_oj25m"]
@@ -9,6 +9,7 @@
 [ext_resource type="MeshLibrary" uid="uid://d038q44admb2h" path="res://addons/kaykit_prototype_bits/kaykit_proto.meshlib" id="5_0itso"]
 [ext_resource type="PackedScene" uid="uid://cth06yd5re42s" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_small.gltf" id="5_qias4"]
 [ext_resource type="Script" path="res://shot_target.gd" id="9_ifs8p"]
+[ext_resource type="Texture2D" uid="uid://cc1pk7urxmm7e" path="res://sunglasses.png" id="11_cvktd"]
 [ext_resource type="PackedScene" uid="uid://5frscqa3fsve" path="res://addons/kaykit_prototype_bits/Assets/gltf/Door_B.gltf" id="11_kc1t7"]
 [ext_resource type="PackedScene" uid="uid://57ajvyunmy8h" path="res://addons/kaykit_prototype_bits/Assets/gltf/target.gltf" id="12_efeok"]
 [ext_resource type="PackedScene" uid="uid://cd328e2gs4hnn" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_stand_B.gltf" id="13_4i2my"]
@@ -66,7 +67,6 @@ bus = &"Voice"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984905, 0.173098, 0, -0.173098, 0.984905, 0.5, 2, 3.44)
 current = true
-fov = 74.9962
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("4_u3jc4")
@@ -138,99 +138,141 @@ data = {
 "cells": PackedInt32Array(0, 65533, 655378, 0, 65534, 655378, 0, 65535, 655378, 0, 0, 655378, 1, 65533, 655378, 2, 65533, 655378, 3, 65533, 655378, 4, 65533, 655378, 4, 65532, 655378, 3, 65532, 655378, 3, 65531, 655378, 4, 65531, 655378, 4, 65530, 655378, 3, 65530, 655378, 2, 65530, 655378, 2, 65531, 655378, 1, 65531, 655378, 0, 65531, 655378, 0, 65530, 655378, 0, 65529, 655378, 0, 65528, 655378, 1, 65528, 655378, 1, 65529, 655378, 1, 65530, 655378, 2, 65529, 655378, 2, 65528, 655378, 3, 65528, 655378, 4, 65528, 655378, 4, 65529, 655378, 3, 65529, 655378)
 }
 
-[node name="Items" type="Node3D" parent="."]
-
-[node name="target_small2" parent="Items" instance=ExtResource("5_qias4")]
-transform = Transform3D(1.67395, 0, -1.09448, 0, 2, 0, 1.09448, 0, 1.67395, 2.40198, -0.256066, -1.77345)
-
-[node name="Small Target" type="Area3D" parent="Items/target_small2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.828559, 0)
-collision_layer = 16
-collision_mask = 8
-script = ExtResource("9_ifs8p")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/target_small2/Small Target"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.000308633, 0.030732, 0.0973968)
-shape = SubResource("CylinderShape3D_0r26x")
-
-[node name="target_small3" parent="Items" instance=ExtResource("5_qias4")]
-transform = Transform3D(1.67395, 0, -1.09448, 0, 2, 0, 1.09448, 0, 1.67395, 6.99634, -0.256065, -10.667)
-
-[node name="Small Target" type="Area3D" parent="Items/target_small3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.828559, 0)
-collision_layer = 16
-collision_mask = 8
-script = ExtResource("9_ifs8p")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/target_small3/Small Target"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.000308633, 0.030732, 0.0973968)
-shape = SubResource("CylinderShape3D_0r26x")
-
-[node name="Door_B2" parent="Items" instance=ExtResource("11_kc1t7")]
+[node name="Door_B2" parent="." instance=ExtResource("11_kc1t7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.21261, 0, -30.8173)
 
-[node name="target2" parent="Items" instance=ExtResource("12_efeok")]
+[node name="Targets" type="Node3D" parent="."]
+
+[node name="target_small2" parent="Targets" instance=ExtResource("5_qias4")]
+transform = Transform3D(1.67395, 0, -1.09448, 0, 2, 0, 1.09448, 0, 1.67395, 2.40198, -0.256066, -1.77345)
+
+[node name="Small Target" type="Area3D" parent="Targets/target_small2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.828559, 0)
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("9_ifs8p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targets/target_small2/Small Target"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.000308633, 0.030732, 0.0973968)
+shape = SubResource("CylinderShape3D_0r26x")
+
+[node name="Sunglasses" type="Sprite3D" parent="Targets/target_small2"]
+transform = Transform3D(1, -3.55271e-15, 0, 0, 1, -8.9407e-08, 2.98023e-08, 8.9407e-08, 1, -0.00601137, 0.944245, 0.202483)
+pixel_size = 0.001
+shaded = true
+render_priority = 4
+texture = ExtResource("11_cvktd")
+
+[node name="target_small3" parent="Targets" instance=ExtResource("5_qias4")]
+transform = Transform3D(1.67395, 0, -1.09448, 0, 2, 0, 1.09448, 0, 1.67395, 6.99634, -0.256065, -10.667)
+
+[node name="Small Target" type="Area3D" parent="Targets/target_small3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.828559, 0)
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("9_ifs8p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targets/target_small3/Small Target"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.000308633, 0.030732, 0.0973968)
+shape = SubResource("CylinderShape3D_0r26x")
+
+[node name="Sunglasses" type="Sprite3D" parent="Targets/target_small3"]
+transform = Transform3D(1, -3.55271e-15, 0, 0, 1, -8.9407e-08, 2.98023e-08, 8.9407e-08, 1, 0.0315273, 0.950211, 0.259862)
+pixel_size = 0.001
+shaded = true
+render_priority = 4
+texture = ExtResource("11_cvktd")
+
+[node name="target2" parent="Targets" instance=ExtResource("12_efeok")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.26543, 2.55434, -26.2537)
 
-[node name="Target" type="Area3D" parent="Items/target2"]
+[node name="Target" type="Area3D" parent="Targets/target2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0086, 0.159964)
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("9_ifs8p")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/target2/Target"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targets/target2/Target"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_0r26x")
 
-[node name="target_stand_B2" parent="Items" instance=ExtResource("13_4i2my")]
+[node name="Sunglasses" type="Sprite3D" parent="Targets/target2"]
+transform = Transform3D(1, -3.55271e-15, 0, 0, 1, -8.9407e-08, 2.98023e-08, 8.9407e-08, 1, 0.0404017, 0.109171, 0.202484)
+pixel_size = 0.0014
+shaded = true
+render_priority = 4
+texture = ExtResource("11_cvktd")
+
+[node name="target_stand_B2" parent="Targets" instance=ExtResource("13_4i2my")]
 transform = Transform3D(0.564088, 0, 0.825715, 0, 1, 0, -0.825715, 0, 0.564088, 4.61894, 0, -21.0597)
 
-[node name="Target" type="Area3D" parent="Items/target_stand_B2"]
+[node name="Target" type="Area3D" parent="Targets/target_stand_B2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 1.50402, 0.159965)
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("9_ifs8p")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/target_stand_B2/Target"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targets/target_stand_B2/Target"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_0r26x")
 
-[node name="target_wall_large_A" parent="Items" instance=ExtResource("14_4jclb")]
+[node name="Sunglasses" type="Sprite3D" parent="Targets/target_stand_B2"]
+transform = Transform3D(1, -1.42109e-14, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0.000934601, 1.64866, 0.212652)
+pixel_size = 0.0015
+shaded = true
+render_priority = 4
+texture = ExtResource("11_cvktd")
+
+[node name="target_wall_large_A" parent="Targets" instance=ExtResource("14_4jclb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2531, 2.29622, -30.7739)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/target_wall_large_A"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targets/target_wall_large_A"]
 shape = SubResource("ConvexPolygonShape3D_snwo6")
 
-[node name="Target" type="Area3D" parent="Items/target_wall_large_A"]
+[node name="Target" type="Area3D" parent="Targets/target_wall_large_A"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0086, 0.159964)
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("9_ifs8p")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/target_wall_large_A/Target"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targets/target_wall_large_A/Target"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_0r26x")
 
-[node name="target_small4" parent="Items" instance=ExtResource("5_qias4")]
+[node name="Sunglasses" type="Sprite3D" parent="Targets/target_wall_large_A"]
+transform = Transform3D(1, -3.55271e-15, 0, 0, 1, -8.9407e-08, 2.98023e-08, 8.9407e-08, 1, -0.0663128, 0.18881, 0.202484)
+pixel_size = 0.002
+shaded = true
+render_priority = 4
+texture = ExtResource("11_cvktd")
+
+[node name="target_small4" parent="Targets" instance=ExtResource("5_qias4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3015, 0, -19.993)
 
-[node name="Target" type="Area3D" parent="Items/target_small4"]
+[node name="Target" type="Area3D" parent="Targets/target_small4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.863144, 0.159964)
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("9_ifs8p")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/target_small4/Target"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targets/target_small4/Target"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_0r26x")
 
+[node name="Sunglasses" type="Sprite3D" parent="Targets/target_small4"]
+transform = Transform3D(1, -3.55271e-15, 0, 0, 1, -8.9407e-08, 2.98023e-08, 8.9407e-08, 1, -0.00879097, 0.919199, 0.202484)
+pixel_size = 0.0007
+shaded = true
+render_priority = 4
+texture = ExtResource("11_cvktd")
+
 [connection signal="reloaded" from="Player" to="Player/HUD" method="_on_player_reloaded"]
 [connection signal="shot_fired" from="Player" to="Player/HUD" method="_on_player_shot_fired"]
-[connection signal="target_shot" from="Items/target_small2/Small Target" to="." method="_on_target_shot"]
-[connection signal="target_shot" from="Items/target_small3/Small Target" to="." method="_on_target_shot"]
-[connection signal="target_shot" from="Items/target2/Target" to="." method="_on_target_shot"]
-[connection signal="target_shot" from="Items/target_stand_B2/Target" to="." method="_on_target_shot"]
-[connection signal="target_shot" from="Items/target_wall_large_A/Target" to="." method="_on_target_shot"]
-[connection signal="target_shot" from="Items/target_small4/Target" to="." method="_on_target_shot"]
+[connection signal="target_shot" from="Targets/target_small2/Small Target" to="." method="_on_target_shot"]
+[connection signal="target_shot" from="Targets/target_small3/Small Target" to="." method="_on_target_shot"]
+[connection signal="target_shot" from="Targets/target2/Target" to="." method="_on_target_shot"]
+[connection signal="target_shot" from="Targets/target_stand_B2/Target" to="." method="_on_target_shot"]
+[connection signal="target_shot" from="Targets/target_wall_large_A/Target" to="." method="_on_target_shot"]
+[connection signal="target_shot" from="Targets/target_small4/Target" to="." method="_on_target_shot"]
 
-[editable path="Items/target_wall_large_A"]
+[editable path="Targets/target_wall_large_A"]

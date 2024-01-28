@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="ggj-2024-rail-shooter"
+config/name="Cool Shoot"
+config/version="0.1.0"
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [display]
 
