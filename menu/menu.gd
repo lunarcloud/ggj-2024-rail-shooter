@@ -24,6 +24,9 @@ var voice : AudioStreamPlayer = $"Voice"
 @onready
 var music : AudioStreamPlayer = $"Music"
 
+@onready
+var hardmode_toggle : CheckButton = $VBoxContainer/HardModeToggle
+
 var _debounce := false
 
 
@@ -62,6 +65,7 @@ func play_level(level: PackedScene, end_callback) -> void:
 		
 	var instance = level.instantiate()
 	instance.name = "current_level"
+	instance.hard_mode = hardmode_toggle.button_pressed
 	instance.level_complete.connect(end_callback)
 	instance.level_failed.connect(func(): game_over(false))
 	add_sibling(instance)

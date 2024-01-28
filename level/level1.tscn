@@ -33,6 +33,33 @@ sdfgi_read_sky_light = false
 sdfgi_energy = 5.225
 fog_sky_affect = 0.5
 
+[sub_resource type="Animation" id="Animation_x6mjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.402, -0.256, -1.773)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.579063, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_n25hf"]
 resource_name = "Shot"
 length = 0.5
@@ -61,7 +88,17 @@ tracks/1/keys = {
 "values": [Vector3(0, -0.579063, 0), Vector3(-1.15446, -1.80424, 1.77685)]
 }
 
-[sub_resource type="Animation" id="Animation_x6mjb"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ph1hg"]
+_data = {
+"RESET": SubResource("Animation_x6mjb"),
+"Shot": SubResource("Animation_n25hf")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0r26x"]
+height = 0.255502
+radius = 0.309488
+
+[sub_resource type="Animation" id="Animation_3q52s"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -73,7 +110,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(2.402, -0.256, -1.773)]
+"values": [Vector3(6.996, -0.256, -10.667)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -85,18 +122,8 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.579063, 0)]
+"values": [Vector3(0, -0.579449, 0)]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ph1hg"]
-_data = {
-"RESET": SubResource("Animation_x6mjb"),
-"Shot": SubResource("Animation_n25hf")
-}
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_0r26x"]
-height = 0.255502
-radius = 0.309488
 
 [sub_resource type="Animation" id="Animation_8706y"]
 resource_name = "Shot"
@@ -126,38 +153,14 @@ tracks/1/keys = {
 "values": [Vector3(0, -0.579063, 0), Vector3(-0.578245, -0.0326914, -1.51103)]
 }
 
-[sub_resource type="Animation" id="Animation_3q52s"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(6.996, -0.256, -10.667)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -0.579449, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uqjtk"]
 _data = {
 "RESET": SubResource("Animation_3q52s"),
 "Shot": SubResource("Animation_8706y")
 }
+
+[sub_resource type="Animation" id="Animation_rmnis"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_ym4gj"]
 resource_name = "Shot"
@@ -186,28 +189,10 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0.261799)]
 }
 
-[sub_resource type="Animation" id="Animation_rmnis"]
-length = 0.001
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4284u"]
 _data = {
 "RESET": SubResource("Animation_rmnis"),
 "Shot": SubResource("Animation_ym4gj")
-}
-
-[sub_resource type="Animation" id="Animation_pc8dq"]
-resource_name = "Shot"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.971468, 0), Vector3(0, 9.42478, 0), Vector3(0, 11.1701, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_dix0c"]
@@ -225,6 +210,21 @@ tracks/0/keys = {
 "values": [Vector3(0, 0.971468, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_pc8dq"]
+resource_name = "Shot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.971468, 0), Vector3(0, 9.42478, 0), Vector3(0, 11.1701, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eu136"]
 _data = {
 "RESET": SubResource("Animation_dix0c"),
@@ -233,6 +233,9 @@ _data = {
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_snwo6"]
 points = PackedVector3Array(-1.01587, -1.01587, -0.115851, 0.958011, 0.958011, 0.1, 0.958011, -0.958011, 0.1, 1.01587, 1.01587, -0.115851, -0.958011, 0.958011, 0.1, 1.01587, -1.01587, -0.115851, -1.01587, 1.01587, -0.115851, -0.958011, -0.958011, 0.1)
+
+[sub_resource type="Animation" id="Animation_pmmo7"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_0p55d"]
 resource_name = "Shot"
@@ -250,13 +253,37 @@ tracks/0/keys = {
 "values": [Vector3(17.2531, 2.29622, -30.7739), Vector3(17.253, 1, -30.774), Vector3(17.253, 1.3, -30.774), Vector3(17.253, 1, -30.774)]
 }
 
-[sub_resource type="Animation" id="Animation_pmmo7"]
-length = 0.001
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7sd25"]
 _data = {
 "RESET": SubResource("Animation_pmmo7"),
 "Shot": SubResource("Animation_0p55d")
+}
+
+[sub_resource type="Animation" id="Animation_qlt1x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(17.3015, 0, -19.993)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_bpi8r"]
@@ -287,33 +314,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(1.5708, 0, 0), Vector3(1.39626, 0, 0), Vector3(1.5708, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_qlt1x"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(17.3015, 0, -19.993)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kgaet"]
 _data = {
 "RESET": SubResource("Animation_qlt1x"),
@@ -323,7 +323,8 @@ _data = {
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_8es4g")
 total_bullets = 3
-level_timeout_seconds = 20.0
+easy_timeout_seconds = 20.0
+hard_timeout_seconds = 15.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j5hbc")
@@ -348,7 +349,7 @@ bus = &"Voice"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984905, 0.173098, 0, -0.173098, 0.984905, 0.5, 2, 3.44)
 current = true
-fov = 74.0691
+fov = 74.9333
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("4_u3jc4")

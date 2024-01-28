@@ -13,8 +13,13 @@ signal section_update(section: int)
 @export_range(3, 12)
 var total_bullets := 6
 
+var hard_mode := false
+
 @export_range(15.0, 90.0)
-var level_timeout_seconds := 40.0
+var easy_timeout_seconds := 40.0
+
+@export_range(15.0, 90.0)
+var hard_timeout_seconds := 40.0
 
 @onready
 var hud : PlayerHUD = $"Player/HUD"
@@ -42,11 +47,14 @@ const MISSION_COMPLETED : AudioStreamOggVorbis = preload("res://addons/kenney vo
 
 func _ready():
 	hud.set_bullets(total_bullets)
-	hud.set_timer(level_timeout_seconds)
 	hud.set_targets(section_targets[current_section])
+	var level_time := hard_timeout_seconds if hard_mode else easy_timeout_seconds
+	hud.set_timer(level_time)
+	level_timer = get_tree().create_timer(level_time)
 	
-	level_timer = get_tree().create_timer(level_timeout_seconds)
 	var fail_callback = func(): 
+		if level_is_complete:
+			return
 		level_is_complete = true
 		level_failed.emit()
 	level_timer.timeout.connect(fail_callback)
@@ -62,6 +70,8 @@ func _ready():
 
 
 func _process(_delta):
+	if level_is_complete:
+		return
 	hud.set_timer(level_timer.time_left)
 
 
