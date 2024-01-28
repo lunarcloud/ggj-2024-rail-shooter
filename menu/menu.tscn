@@ -65,7 +65,6 @@ text = "Cool Shoot"
 [node name="BorderToggle" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-button_pressed = true
 text = "Sinden Lightgun Borders"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
