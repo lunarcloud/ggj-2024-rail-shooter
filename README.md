@@ -4,5 +4,6 @@ A game made for the [Global Game Jam 2024](https://globalgamejam.org/games/2024/
 You're a cool agent ready to shoot cool things... like butt-moon werewolves!
 
 ## Tools
-Made with Godot 4.2
-Raw Art Files can be opened with Krita
+* Made with Godot 4.2.
+* Raw Art Files can be opened with Krita
+* Sound clips recorded in Audacity
