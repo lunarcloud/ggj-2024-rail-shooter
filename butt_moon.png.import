@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://hv7iltx1o8uy"
 path.s3tc="res://.godot/imported/butt_moon.png-30c3d3115eb3c31598f59e4e2b7c37e1.s3tc.ctex"
+path.etc2="res://.godot/imported/butt_moon.png-30c3d3115eb3c31598f59e4e2b7c37e1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://butt_moon.png"
-dest_files=["res://.godot/imported/butt_moon.png-30c3d3115eb3c31598f59e4e2b7c37e1.s3tc.ctex"]
+dest_files=["res://.godot/imported/butt_moon.png-30c3d3115eb3c31598f59e4e2b7c37e1.s3tc.ctex", "res://.godot/imported/butt_moon.png-30c3d3115eb3c31598f59e4e2b7c37e1.etc2.ctex"]
 
 [params]
 

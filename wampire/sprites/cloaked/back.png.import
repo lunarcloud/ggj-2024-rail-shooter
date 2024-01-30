@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dm7asw617yal1"
 path.s3tc="res://.godot/imported/back.png-8283acafd3f218e7b37b6047b1b5e5aa.s3tc.ctex"
+path.etc2="res://.godot/imported/back.png-8283acafd3f218e7b37b6047b1b5e5aa.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://wampire/sprites/cloaked/back.png"
-dest_files=["res://.godot/imported/back.png-8283acafd3f218e7b37b6047b1b5e5aa.s3tc.ctex"]
+dest_files=["res://.godot/imported/back.png-8283acafd3f218e7b37b6047b1b5e5aa.s3tc.ctex", "res://.godot/imported/back.png-8283acafd3f218e7b37b6047b1b5e5aa.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bspma5vh3uma0"
 path.s3tc="res://.godot/imported/front.png-dff6a06879a248419ccafdc30ac096d7.s3tc.ctex"
+path.etc2="res://.godot/imported/front.png-dff6a06879a248419ccafdc30ac096d7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://wampire/sprites/fingerguns/front.png"
-dest_files=["res://.godot/imported/front.png-dff6a06879a248419ccafdc30ac096d7.s3tc.ctex"]
+dest_files=["res://.godot/imported/front.png-dff6a06879a248419ccafdc30ac096d7.s3tc.ctex", "res://.godot/imported/front.png-dff6a06879a248419ccafdc30ac096d7.etc2.ctex"]
 
 [params]
 

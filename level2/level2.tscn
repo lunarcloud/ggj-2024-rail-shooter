@@ -164,7 +164,6 @@ bus = &"Voice"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71221, 0.906362, 0)
 current = true
-fov = 74.9435
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("6_gmqx4")
@@ -352,5 +351,5 @@ libraries = {
 [connection signal="target_shot" from="Targets/Werewolf2" to="." method="_on_target_shot"]
 [connection signal="target_shot" from="Targets/Werewolf3" to="." method="_on_target_shot"]
 [connection signal="target_shot" from="Targets/Werewolf4" to="." method="_on_target_shot"]
-[connection signal="target_shot" from="Targets/Wampire" to="." method="_on_target_shot"]
 [connection signal="target_shot" from="Targets/Wampire" to="." method="_on_wampire_target_shot"]
+[connection signal="target_shot" from="Targets/Wampire" to="." method="_on_target_shot"]

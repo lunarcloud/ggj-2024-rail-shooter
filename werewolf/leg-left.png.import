@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dl4hdri7d8tsc"
 path.s3tc="res://.godot/imported/leg-left.png-2a8059570861e186363c83c8c4a783d9.s3tc.ctex"
+path.etc2="res://.godot/imported/leg-left.png-2a8059570861e186363c83c8c4a783d9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://werewolf/leg-left.png"
-dest_files=["res://.godot/imported/leg-left.png-2a8059570861e186363c83c8c4a783d9.s3tc.ctex"]
+dest_files=["res://.godot/imported/leg-left.png-2a8059570861e186363c83c8c4a783d9.s3tc.ctex", "res://.godot/imported/leg-left.png-2a8059570861e186363c83c8c4a783d9.etc2.ctex"]
 
 [params]
 

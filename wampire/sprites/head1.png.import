@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://qfv7p80rw5gy"
 path.s3tc="res://.godot/imported/head1.png-efd691b498fc23dd4986f32630f740fc.s3tc.ctex"
+path.etc2="res://.godot/imported/head1.png-efd691b498fc23dd4986f32630f740fc.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://wampire/sprites/head1.png"
-dest_files=["res://.godot/imported/head1.png-efd691b498fc23dd4986f32630f740fc.s3tc.ctex"]
+dest_files=["res://.godot/imported/head1.png-efd691b498fc23dd4986f32630f740fc.s3tc.ctex", "res://.godot/imported/head1.png-efd691b498fc23dd4986f32630f740fc.etc2.ctex"]
 
 [params]
 

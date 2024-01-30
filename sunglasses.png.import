@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cc1pk7urxmm7e"
 path.s3tc="res://.godot/imported/sunglasses.png-2a171be8025dd37fd9c60ab59b344129.s3tc.ctex"
+path.etc2="res://.godot/imported/sunglasses.png-2a171be8025dd37fd9c60ab59b344129.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://sunglasses.png"
-dest_files=["res://.godot/imported/sunglasses.png-2a171be8025dd37fd9c60ab59b344129.s3tc.ctex"]
+dest_files=["res://.godot/imported/sunglasses.png-2a171be8025dd37fd9c60ab59b344129.s3tc.ctex", "res://.godot/imported/sunglasses.png-2a171be8025dd37fd9c60ab59b344129.etc2.ctex"]
 
 [params]
 

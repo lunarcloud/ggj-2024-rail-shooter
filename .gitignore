@@ -6,3 +6,4 @@ addons/phantom_camera/examples/
 *.jpg~
 *.kra~
 export/cool_shoot.*
+export/web/**

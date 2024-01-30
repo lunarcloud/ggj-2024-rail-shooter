@@ -25,6 +25,12 @@ var voice : AudioStreamPlayer = $"Voice"
 var music : AudioStreamPlayer = $"Music"
 
 @onready
+var quit_button : Button = $VBoxContainer/HBoxContainer/QuitButton
+
+@onready
+var fullscreen_toggle : CheckButton = $VBoxContainer/HBoxContainer2/VBoxContainer2/FullscreenToggle
+
+@onready
 var hardmode_toggle : CheckButton = $VBoxContainer/HBoxContainer2/VBoxContainer/HardModeToggle
 
 @onready
@@ -43,6 +49,9 @@ var msaa_enabled = get_viewport().msaa_3d != Viewport.MSAA_DISABLED
 func _ready() -> void:
 	msaa_toggle.button_pressed = msaa_enabled
 	msaa_toggle.toggled.connect(change_msaa)
+	
+	quit_button.visible = OS.get_name() != "Web"
+	fullscreen_toggle.button_pressed = get_window().mode == Window.MODE_FULLSCREEN
 
 
 func _process(_delta):

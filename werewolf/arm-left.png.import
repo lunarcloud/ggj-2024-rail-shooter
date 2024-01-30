@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bc7fo04tgr13x"
 path.s3tc="res://.godot/imported/arm-left.png-317beecadd9a6b5254570df3f2704060.s3tc.ctex"
+path.etc2="res://.godot/imported/arm-left.png-317beecadd9a6b5254570df3f2704060.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://werewolf/arm-left.png"
-dest_files=["res://.godot/imported/arm-left.png-317beecadd9a6b5254570df3f2704060.s3tc.ctex"]
+dest_files=["res://.godot/imported/arm-left.png-317beecadd9a6b5254570df3f2704060.s3tc.ctex", "res://.godot/imported/arm-left.png-317beecadd9a6b5254570df3f2704060.etc2.ctex"]
 
 [params]
 
