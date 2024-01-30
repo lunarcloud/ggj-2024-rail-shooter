@@ -34,6 +34,9 @@ var fullscreen_toggle : CheckButton = $VBoxContainer/HBoxContainer2/VBoxContaine
 var hardmode_toggle : CheckButton = $VBoxContainer/HBoxContainer2/VBoxContainer/HardModeToggle
 
 @onready
+var border_toggle : CheckButton = $VBoxContainer/HBoxContainer2/VBoxContainer/BorderToggle
+
+@onready
 var msaa_toggle : CheckButton = $VBoxContainer/HBoxContainer2/VBoxContainer2/AAToggle
 
 @onready
@@ -50,7 +53,15 @@ func _ready() -> void:
 	msaa_toggle.button_pressed = msaa_enabled
 	msaa_toggle.toggled.connect(change_msaa)
 	
-	quit_button.visible = OS.get_name() != "Web"
+	match OS.get_name():
+		"Windows", "Linux":
+			border_toggle.visible = true
+		"Web":
+			border_toggle.visible = true # It might be a windows/linux web user
+			quit_button.visible = false # quit doesn't make sense
+		_:
+			border_toggle.visible = false # Sinden driver not available
+
 	fullscreen_toggle.button_pressed = get_window().mode == Window.MODE_FULLSCREEN
 
 
