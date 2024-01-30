@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://die3q8qjh2fe5"]
 
-[ext_resource type="Script" path="res://hud_ui.gd" id="1_rbjri"]
-[ext_resource type="Texture2D" uid="uid://njnedjormd4m" path="res://bullet.png" id="2_gx42r"]
+[ext_resource type="Script" path="res://hud/hud_ui.gd" id="1_st5k2"]
+[ext_resource type="Texture2D" uid="uid://njnedjormd4m" path="res://hud/bullet.png" id="2_c6m2j"]
 [ext_resource type="Texture2D" uid="uid://cjplpoqhy1mhg" path="res://hud/time_symbol.png" id="3_ovkri"]
 [ext_resource type="Texture2D" uid="uid://dond0jfox5a77" path="res://hud/target_symbol.png" id="4_iq0rr"]
 
@@ -24,13 +24,13 @@ corner_detail = 5
 [sub_resource type="Theme" id="Theme_oe1f4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1bwxj"]
-font_size = 120
+font_size = 80
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 0.647059)
 shadow_offset = Vector2(4, 4)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wlcwy"]
-font_size = 120
+font_size = 100
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 0.647059)
 shadow_offset = Vector2(4, 4)
@@ -42,15 +42,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_rbjri")
+script = ExtResource("1_st5k2")
 
 [node name="Panel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 108.0
-offset_top = 92.0
-offset_right = 463.0
-offset_bottom = 340.0
+offset_left = 72.0
+offset_top = 72.0
+offset_right = 327.0
+offset_bottom = 269.0
 scale = Vector2(0.4, 0.4)
 theme_override_styles/panel = SubResource("StyleBoxFlat_arg83")
 
@@ -61,7 +61,7 @@ theme = SubResource("Theme_oe1f4")
 [node name="Bullet1" type="TextureRect" parent="Panel/Bullet"]
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("2_gx42r")
+texture = ExtResource("2_c6m2j")
 expand_mode = 5
 
 [node name="Panel2" type="PanelContainer" parent="."]
@@ -69,10 +69,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -540.0
-offset_top = 92.0
-offset_right = 430.0
-offset_bottom = 416.516
+offset_left = -380.0
+offset_top = 72.0
+offset_right = 357.0
+offset_bottom = 312.0
 grow_horizontal = 0
 scale = Vector2(0.4, 0.4)
 theme_override_styles/panel = SubResource("StyleBoxFlat_arg83")
@@ -92,8 +92,8 @@ text = "00:00"
 label_settings = SubResource("LabelSettings_1bwxj")
 
 [node name="Spacer" type="Control" parent="Panel2/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="TargetsIcon" type="TextureRect" parent="Panel2/HBoxContainer"]
 layout_mode = 2
@@ -101,6 +101,7 @@ texture = ExtResource("4_iq0rr")
 expand_mode = 3
 
 [node name="TargetsText" type="Label" parent="Panel2/HBoxContainer"]
+custom_minimum_size = Vector2(116, 0)
 layout_mode = 2
-text = "0"
+text = "00"
 label_settings = SubResource("LabelSettings_wlcwy")

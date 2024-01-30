@@ -45,7 +45,6 @@ script = ExtResource("2_1g820")
 visible = false
 layout_mode = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_0nfgm")
-border_size = 80
 
 [connection signal="border_enabled" from="Menu" to="SindenBorder" method="_on_border_toggled"]
 [connection signal="level_transition_end" from="Menu" to="FadeToBlack" method="to_transparent"]

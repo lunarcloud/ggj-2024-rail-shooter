@@ -4,9 +4,13 @@ extends Level
 var wampire_anim : AnimationPlayer = $Targets/Wampire/WampireAttackAnim
 
 const FRIGHT_NIGHT_TWIST = preload("res://level2/Fright Night Twist.mp3")
-
+const COMPAT_RENDER_ENV = preload("res://level2/compat_render_env.tres")
+const FORWARD_RENDERER_ENV = preload("res://level2/forward_renderer_env.tres")
 
 func _ready():
+	$WorldEnvironment.environment = \
+		COMPAT_RENDER_ENV if RenderingServer.get_rendering_device() == null \
+		else FORWARD_RENDERER_ENV
 	section_targets =   [1,		0,		0,		1,	0,		2,	0,		0,	0,	1]
 	section_skip_time = [0,		1.5,	1.5,	0,	1.5,	0,	1.5,	1,	1,	0]
 	super()

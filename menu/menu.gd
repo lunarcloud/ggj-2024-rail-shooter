@@ -25,9 +25,24 @@ var voice : AudioStreamPlayer = $"Voice"
 var music : AudioStreamPlayer = $"Music"
 
 @onready
-var hardmode_toggle : CheckButton = $VBoxContainer/HardModeToggle
+var hardmode_toggle : CheckButton = $VBoxContainer/HBoxContainer2/VBoxContainer/HardModeToggle
 
+@onready
+var msaa_toggle : CheckButton = $VBoxContainer/HBoxContainer2/VBoxContainer2/AAToggle
+
+@onready
+var skip_level1_toggle : CheckButton = $VBoxContainer/HBoxContainer2/VBoxContainer/SkipLevel1Toggle
+	
 var _debounce := false
+
+var graphics_compat_mode = RenderingServer.get_rendering_device() == null
+
+@onready
+var msaa_enabled = get_viewport().msaa_3d != Viewport.MSAA_DISABLED
+
+func _ready() -> void:
+	msaa_toggle.button_pressed = msaa_enabled
+	msaa_toggle.toggled.connect(change_msaa)
 
 
 func _process(_delta):
@@ -38,11 +53,45 @@ func _process(_delta):
 		back_to_main()
 
 
+func change_msaa(on: bool):
+	var viewport := get_viewport()
+	viewport.msaa_2d = Viewport.MSAA_8X if on else Viewport.MSAA_DISABLED
+	viewport.msaa_3d = Viewport.MSAA_4X if on else Viewport.MSAA_DISABLED
+	viewport.use_debanding = on
+	msaa_enabled = on
+
+
+func toggle_native_or_1080p_mode(is_native_3d: bool):
+	get_window().content_scale_mode = \
+		Window.CONTENT_SCALE_MODE_CANVAS_ITEMS if is_native_3d \
+		else Window.CONTENT_SCALE_MODE_VIEWPORT
+
+
+func toggle_fullscreen(fullscreen: bool):
+	var window := get_window()
+	
+	if fullscreen:
+		window.mode = Window.MODE_FULLSCREEN
+	else:
+		window.mode = Window.MODE_WINDOWED
+		# Workaround bug where the window is stuck maximized
+		if OS.get_name() == "Linux":
+			await get_tree().create_timer(0.1).timeout
+			window.mode = Window.MODE_FULLSCREEN
+			await get_tree().create_timer(0.1).timeout
+			window.mode = Window.MODE_WINDOWED
+		
+		window.move_to_center.call_deferred()
+
+
 func play():
-	play_level1()
+	play_level2() if skip_level1_toggle.button_pressed \
+		else play_level1()
+
 
 func play_level1() -> void:
 	play_level(LEVEL_1, play_level2)
+
 
 func play_level2() -> void:
 	play_level(LEVEL_2, game_over)
@@ -138,3 +187,4 @@ func quit():
 func _on_button_focus():
 	sfx.stream = focus_sound
 	sfx.play(0)
+

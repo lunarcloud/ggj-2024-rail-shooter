@@ -59,8 +59,9 @@ alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 200
+theme_override_font_sizes/font_size = 190
 text = "Cool Shoot"
+horizontal_alignment = 1
 
 [node name="Sunglasses" type="TextureRect" parent="VBoxContainer/Title"]
 layout_mode = 1
@@ -69,13 +70,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -402.0
-offset_top = -55.5
-offset_right = -18.0
-offset_bottom = 72.5
+offset_left = -383.0
+offset_top = -38.5
+offset_right = 1.0
+offset_bottom = 89.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.45, 0.45)
 texture = ExtResource("6_bccmb")
 
 [node name="Sunglasses2" type="TextureRect" parent="VBoxContainer/Title"]
@@ -85,24 +86,71 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 253.0
-offset_top = -52.5
-offset_right = 637.0
-offset_bottom = 75.5
+offset_left = 243.0
+offset_top = -36.5
+offset_right = 627.0
+offset_bottom = 91.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.45, 0.45)
 texture = ExtResource("6_bccmb")
 
-[node name="BorderToggle" type="CheckButton" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_constants/separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Game  Options"
+horizontal_alignment = 1
+
+[node name="SkipLevel1Toggle" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Skip Level 1"
+
+[node name="BorderToggle" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
 text = "Sinden Lightgun Borders"
 
-[node name="HardModeToggle" type="CheckButton" parent="VBoxContainer"]
+[node name="HardModeToggle" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 text = "Hard Mode"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+text = "Graphics  Options"
+horizontal_alignment = 1
+
+[node name="AAToggle" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+button_pressed = true
+text = "Anti-Aliasing"
+
+[node name="1080pToggle" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+button_pressed = true
+text = "Native Res"
+
+[node name="FullscreenToggle" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+button_pressed = true
+text = "Fullscreen"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -111,22 +159,32 @@ size_flags_vertical = 3
 theme_override_constants/separation = 80
 
 [node name="PlayButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(240, 120)
+custom_minimum_size = Vector2(320, 160)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(240, 120)
+custom_minimum_size = Vector2(320, 160)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Quit"
 
-[connection signal="focus_entered" from="VBoxContainer/BorderToggle" to="." method="_on_button_focus"]
-[connection signal="mouse_entered" from="VBoxContainer/BorderToggle" to="." method="_on_button_focus"]
-[connection signal="toggled" from="VBoxContainer/BorderToggle" to="." method="_on_sinden_borders_toggled"]
-[connection signal="focus_entered" from="VBoxContainer/HardModeToggle" to="." method="_on_button_focus"]
-[connection signal="mouse_entered" from="VBoxContainer/HardModeToggle" to="." method="_on_button_focus"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer/SkipLevel1Toggle" to="." method="_on_button_focus"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer/SkipLevel1Toggle" to="." method="_on_button_focus"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer/BorderToggle" to="." method="_on_button_focus"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer/BorderToggle" to="." method="_on_button_focus"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/VBoxContainer/BorderToggle" to="." method="_on_sinden_borders_toggled"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer/HardModeToggle" to="." method="_on_button_focus"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer/HardModeToggle" to="." method="_on_button_focus"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer2/AAToggle" to="." method="_on_button_focus"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer2/AAToggle" to="." method="_on_button_focus"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer2/1080pToggle" to="." method="_on_button_focus"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer2/1080pToggle" to="." method="_on_button_focus"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/VBoxContainer2/1080pToggle" to="." method="toggle_native_or_1080p_mode"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer2/FullscreenToggle" to="." method="_on_button_focus"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer2/FullscreenToggle" to="." method="_on_button_focus"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/VBoxContainer2/FullscreenToggle" to="." method="toggle_fullscreen" flags=3]
 [connection signal="focus_entered" from="VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_button_focus"]
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_button_focus"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayButton" to="." method="play"]

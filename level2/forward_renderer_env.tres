@@ -1,0 +1,44 @@
+[gd_resource type="Environment" load_steps=5 format=3 uid="uid://cxw6v5vqds6ye"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ha4wr"]
+noise_type = 3
+seed = 1
+frequency = 0.0741
+domain_warp_enabled = true
+domain_warp_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7qqvn"]
+noise = SubResource("FastNoiseLite_ha4wr")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_42j1v"]
+sky_top_color = Color(0.027451, 0.0196078, 0.172549, 1)
+sky_horizon_color = Color(0.305882, 0.145098, 0.258824, 1)
+sky_curve = 0.0100478
+sky_cover = SubResource("NoiseTexture2D_7qqvn")
+sky_cover_modulate = Color(1, 1, 1, 0.0117647)
+ground_bottom_color = Color(0.184314, 0.196078, 0.196078, 1)
+ground_horizon_color = Color(0.164706, 0.0588235, 0.0823529, 1)
+sun_angle_max = 4.0
+sun_curve = 2457.6
+
+[sub_resource type="Sky" id="Sky_p2uav"]
+sky_material = SubResource("ProceduralSkyMaterial_42j1v")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 7.58
+sky = SubResource("Sky_p2uav")
+ambient_light_source = 2
+ambient_light_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
+reflected_light_source = 2
+tonemap_mode = 3
+sdfgi_enabled = true
+sdfgi_bounce_feedback = 0.25
+sdfgi_y_scale = 0
+sdfgi_energy = 0.5
+fog_enabled = true
+fog_light_color = Color(0.14902, 0.160784, 0.172549, 1)
+fog_light_energy = 0.25
+fog_density = 0.1
+fog_aerial_perspective = 0.5
+fog_sky_affect = 0.0

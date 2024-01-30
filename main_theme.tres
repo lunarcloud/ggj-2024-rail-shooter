@@ -7,6 +7,6 @@
 [resource]
 default_base_scale = 2.0
 default_font = ExtResource("1_owvi4")
-default_font_size = 46
+default_font_size = 36
 CheckButton/icons/checked = ExtResource("1_ovt2v")
 CheckButton/icons/unchecked = ExtResource("2_wqfoo")
