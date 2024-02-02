@@ -4,6 +4,9 @@ extends Area3D
 signal target_hurt
 signal target_shot
 
+@onready
+var collision : CollisionShape3D = $CollisionShape3D
+
 @export
 var hits: int = 1
 
@@ -23,4 +26,4 @@ func shoot():
 		await get_tree().create_timer(shot_time).timeout
 	
 	target_shot.emit()
-	queue_free()
+	collision.disabled = true

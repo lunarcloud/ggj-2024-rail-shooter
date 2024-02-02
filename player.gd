@@ -74,6 +74,7 @@ func _shoot() -> void:
 	if not result.is_empty() and result.collider is ShotTarget:
 		result.collider.shoot()
 
+
 func _reload() -> void:
 	if bullets >= total_bullets:
 		return

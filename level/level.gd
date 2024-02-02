@@ -44,6 +44,7 @@ var level_timer : SceneTreeTimer
 const READY : AudioStreamOggVorbis = preload("res://addons/kenney voiceover pack fighter/ready.ogg")
 const GO : AudioStreamOggVorbis = preload("res://addons/kenney voiceover pack/voice type 2/go.ogg")
 const MISSION_COMPLETED : AudioStreamOggVorbis = preload("res://addons/kenney voiceover pack/voice type 2/mission_completed.ogg")
+const MISSION_FAILED : AudioStreamOggVorbis = preload("res://addons/kenney voiceover pack/voice type 2/mission_failed.ogg")
 
 func _ready():
 	hud.set_bullets(total_bullets)
@@ -83,6 +84,17 @@ func _on_target_shot():
 	update_camera()
 
 
+func _on_innocent_shot():
+	if level_is_complete:
+		return
+	level_is_complete = true
+	voice.stream = MISSION_FAILED
+	voice.play(0)
+	await voice.finished
+	level_failed.emit()
+	update_camera()
+
+
 func update_camera() -> void:
 	if level_is_complete or section_targets[current_section] > 0:
 		return
@@ -109,4 +121,5 @@ func complete_level() -> void:
 	voice.stream = MISSION_COMPLETED
 	voice.play(0)
 	await voice.finished
+	await get_tree().create_timer(1).timeout
 	level_complete.emit()

@@ -5,9 +5,6 @@ const BLAH = preload("res://wampire/blah.wav")
 const HANDLE_FINGERGUNS = preload("res://wampire/handle_fingerguns.wav")
 
 @onready
-var anim : AnimationPlayer = $Target/AnimationPlayer
-
-@onready
 var audio : AudioStreamPlayer3D = $AudioVoice
 
 @onready
@@ -15,7 +12,6 @@ var head1 : Node3D = $Sprites/HeadGroup1
 
 @onready
 var head2 : Node3D = $Sprites/HeadGroup2
-
 
 func _on_target_hurt():
 	head1.visible = false

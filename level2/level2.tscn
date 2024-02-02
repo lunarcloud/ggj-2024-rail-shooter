@@ -269,6 +269,7 @@ bus = &"Voice"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71221, 0.906362, 0)
 current = true
+fov = 74.4104
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("6_gmqx4")
@@ -474,9 +475,17 @@ libraries = {
 [connection signal="reloaded" from="Player" to="Player/HUD" method="_on_player_reloaded"]
 [connection signal="shot_fired" from="Player" to="Player/HUD" method="_on_player_shot_fired"]
 [connection signal="target_shot" from="Targets/Moon/MoonTarget" to="." method="_on_moon_shot" flags=3]
+[connection signal="target_shot" from="Targets/Moon/MoonTarget" to="Targets/Werewolf" method="tranform_human" flags=3]
+[connection signal="target_shot" from="Targets/Moon/MoonTarget" to="Targets/Werewolf2" method="tranform_human" flags=3]
+[connection signal="target_shot" from="Targets/Moon/MoonTarget" to="Targets/Werewolf3" method="tranform_human" flags=3]
+[connection signal="target_shot" from="Targets/Moon/MoonTarget" to="Targets/Werewolf4" method="tranform_human"]
+[connection signal="innocent_shot" from="Targets/Werewolf" to="." method="_on_innocent_shot"]
 [connection signal="target_shot" from="Targets/Werewolf" to="." method="_on_target_shot"]
+[connection signal="innocent_shot" from="Targets/Werewolf2" to="." method="_on_innocent_shot"]
 [connection signal="target_shot" from="Targets/Werewolf2" to="." method="_on_target_shot"]
+[connection signal="innocent_shot" from="Targets/Werewolf3" to="." method="_on_innocent_shot"]
 [connection signal="target_shot" from="Targets/Werewolf3" to="." method="_on_target_shot"]
+[connection signal="innocent_shot" from="Targets/Werewolf4" to="." method="_on_innocent_shot"]
 [connection signal="target_shot" from="Targets/Werewolf4" to="." method="_on_target_shot"]
-[connection signal="target_shot" from="Targets/Wampire" to="." method="_on_target_shot"]
 [connection signal="target_shot" from="Targets/Wampire" to="." method="_on_wampire_target_shot"]
+[connection signal="target_shot" from="Targets/Wampire" to="." method="_on_target_shot"]
