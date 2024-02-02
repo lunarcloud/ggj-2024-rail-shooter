@@ -32,11 +32,11 @@ func _process(_delta):
 	if _debounce:
 		return
 	
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot"):
 		_debounce = true
 		_shoot();
 
-	if Input.is_action_pressed("reload"):
+	if Input.is_action_just_pressed("reload"):
 		_debounce = true
 		_reload()
 	
