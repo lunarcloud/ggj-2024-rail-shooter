@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsc5xctxffds1"]
+[gd_scene load_steps=27 format=3 uid="uid://dsc5xctxffds1"]
 
 [ext_resource type="Script" path="res://level2/level2.gd" id="1_hhkaw"]
 [ext_resource type="Environment" uid="uid://cxw6v5vqds6ye" path="res://level2/forward_renderer_env.tres" id="2_a8t13"]
@@ -9,9 +9,11 @@
 [ext_resource type="MeshLibrary" uid="uid://dqwjgvh4mo64s" path="res://addons/kaykit_city_builder_bits/kaykit_city.meshlib" id="7_32815"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="7_jgjij"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_xl54x"]
-[ext_resource type="Texture2D" uid="uid://hv7iltx1o8uy" path="res://butt_moon.png" id="10_2muta"]
 [ext_resource type="PackedScene" uid="uid://dmv5lkbo8ir16" path="res://wampire/wampire.tscn" id="10_f7sbg"]
+[ext_resource type="Texture2D" uid="uid://bgx7ram2bsc22" path="res://butt-moon/left.png" id="10_in6rl"]
 [ext_resource type="PackedScene" uid="uid://duj5jeby1qc44" path="res://werewolf/werewolf.tscn" id="11_c3ts4"]
+[ext_resource type="Texture2D" uid="uid://bx15wt206wp4m" path="res://butt-moon/right.png" id="11_dc1ai"]
+[ext_resource type="Script" path="res://shot_target.gd" id="12_3cvgs"]
 
 [sub_resource type="Resource" id="Resource_r7bax"]
 script = ExtResource("7_xl54x")
@@ -24,13 +26,116 @@ transparency = 1
 shading_mode = 0
 disable_ambient_light = true
 disable_fog = true
-albedo_texture = ExtResource("10_2muta")
+albedo_texture = ExtResource("10_in6rl")
 disable_receive_shadows = true
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_uh0l6"]
 material = SubResource("StandardMaterial3D_24eax")
-size = Vector2(30, 20)
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7kw3"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_texture = ExtResource("11_dc1ai")
+disable_receive_shadows = true
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_d2c7p"]
+material = SubResource("StandardMaterial3D_k7kw3")
+size = Vector2(20, 20)
+
+[sub_resource type="Animation" id="Animation_h6qqn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RightCheek:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(8.75539, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RightCheek:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../RightCheek:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_of0ak"]
+resource_name = "Shot"
+length = 1.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RightCheek:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(8.75539, 0, 0), Vector3(14.845, -1.525, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RightCheek:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../RightCheek:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i6226"]
+_data = {
+"RESET": SubResource("Animation_h6qqn"),
+"Shot": SubResource("Animation_of0ak")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aavar"]
+radius = 10.7532
+height = 29.892
 
 [sub_resource type="Animation" id="Animation_bami2"]
 resource_name = "Attack"
@@ -280,7 +385,7 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Section10" type="Node3D" parent="Shots"]
-transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 2.43367, -0.979805, -34.1796)
+transform = Transform3D(0.147019, 0, 0.989134, 0, 1, 0, -0.989133, 0, 0.147019, 2.43367, -0.979805, -34.1796)
 script = ExtResource("7_jgjij")
 priority_override = false
 priority = 0
@@ -318,11 +423,32 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="ButtMoon" type="MeshInstance3D" parent="."]
+[node name="Targets" type="Node3D" parent="."]
+
+[node name="Moon" type="MeshInstance3D" parent="Targets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3139, 80.4542, -188.258)
 mesh = SubResource("QuadMesh_uh0l6")
+skeleton = NodePath("../..")
 
-[node name="Targets" type="Node3D" parent="."]
+[node name="RightCheek" type="MeshInstance3D" parent="Targets/Moon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75539, 0, 0)
+mesh = SubResource("QuadMesh_d2c7p")
+skeleton = NodePath("../../..")
+
+[node name="MoonTarget" type="Area3D" parent="Targets/Moon"]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("12_3cvgs")
+shot_time = 1.25
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Targets/Moon/MoonTarget"]
+libraries = {
+"": SubResource("AnimationLibrary_i6226")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targets/Moon/MoonTarget"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.42778, 0, 0)
+shape = SubResource("CapsuleShape3D_aavar")
 
 [node name="Werewolf" parent="Targets" instance=ExtResource("11_c3ts4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.621, 0, -4.359)
@@ -347,6 +473,7 @@ libraries = {
 [connection signal="section_update" from="." to="." method="_on_section_update"]
 [connection signal="reloaded" from="Player" to="Player/HUD" method="_on_player_reloaded"]
 [connection signal="shot_fired" from="Player" to="Player/HUD" method="_on_player_shot_fired"]
+[connection signal="target_shot" from="Targets/Moon/MoonTarget" to="." method="_on_moon_shot" flags=3]
 [connection signal="target_shot" from="Targets/Werewolf" to="." method="_on_target_shot"]
 [connection signal="target_shot" from="Targets/Werewolf2" to="." method="_on_target_shot"]
 [connection signal="target_shot" from="Targets/Werewolf3" to="." method="_on_target_shot"]

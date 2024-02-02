@@ -27,3 +27,7 @@ func _on_section_update(section: int) -> void:
 func _on_wampire_target_shot():
 	# make sure he doesn't keep jumping around
 	wampire_anim.pause()
+
+
+func _on_moon_shot():
+	pass # Replace with function body.
