@@ -52,17 +52,18 @@ var _debounce := false
 
 var graphics_compat_mode = RenderingServer.get_rendering_device() == null
 
+var config = ConfigFile.new()
+var configs_ready := false
+const settings_path := "user://settings.cfg"
+
+
 @onready
 var msaa_enabled = get_viewport().msaa_3d != Viewport.MSAA_DISABLED
 
 var current_msaa_2d = Viewport.MSAA_8X
 var current_msaa_3d = Viewport.MSAA_4X
 
-func _ready() -> void:
-	msaa_toggle.button_pressed = msaa_enabled
-	msaa_toggle.toggled.connect(change_msaa)
-	quality_slider.value = ProjectSettings.get_setting("rendering/scaling_3d/scale")
-	
+func _ready() -> void:	
 	match OS.get_name():
 		"Windows", "Linux":
 			border_toggle.visible = true
@@ -73,6 +74,24 @@ func _ready() -> void:
 			border_toggle.visible = false # Sinden driver not available
 
 	fullscreen_toggle.button_pressed = get_window().mode == Window.MODE_FULLSCREEN
+	msaa_toggle.toggled.connect(change_msaa)
+	
+	# Load data from the settings file.
+	var err = config.load(settings_path)
+
+	if err == OK:
+		msaa_enabled = config.get_value("anti_aliasing", "msaa_3d", )
+		current_msaa_3d = config.get_value("anti_aliasing", "msaa_3d", current_msaa_3d)
+		current_msaa_2d = config.get_value("anti_aliasing", "msaa_2d", current_msaa_2d)
+		var fullscreen = config.get_value("window", "mode", get_window().mode)
+		toggle_fullscreen(fullscreen)
+		quality_slider.value = config.get_value("scaling_3d", "scale", 0.75)
+		graphics_scale_changed(quality_slider.value)
+		configs_ready = true
+	else:
+		quality_slider.value = ProjectSettings.get_setting("rendering/scaling_3d/scale")
+	
+	msaa_toggle.button_pressed = msaa_enabled
 
 
 func _process(_delta):
@@ -90,12 +109,12 @@ func change_msaa(on: bool):
 	viewport.use_debanding = on
 	msaa_enabled = on
 	
-	if Engine.is_editor_hint():
+	if not configs_ready:
 		return
 	# Update settings
-	ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_3d", viewport.msaa_3d)
-	ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_2d", viewport.msaa_2d)
-	ProjectSettings.save()
+	config.set_value("anti_aliasing", "msaa_3d", viewport.msaa_3d)
+	config.set_value("anti_aliasing", "msaa_2d", viewport.msaa_2d)
+	config.save(settings_path)
 
 
 func toggle_native_or_1080p_mode(is_native_3d: bool):
@@ -125,13 +144,13 @@ func graphics_scale_changed(value: float):
 	viewport.msaa_2d = current_msaa_2d if msaa_enabled else Viewport.MSAA_DISABLED
 	viewport.msaa_3d = current_msaa_3d if msaa_enabled else Viewport.MSAA_DISABLED
 	
-	if Engine.is_editor_hint():
+	if not configs_ready:
 		return
 	# Update settings
-	ProjectSettings.set_setting("rendering/scaling_3d/scale", window.scaling_3d_scale)
-	ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_3d", viewport.msaa_3d)
-	ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_2d", viewport.msaa_2d)
-	ProjectSettings.save()
+	config.set_value("scaling_3d", "scale", viewport.msaa_3d)
+	config.set_value("anti_aliasing", "msaa_3d", viewport.msaa_3d)
+	config.set_value("anti_aliasing", "msaa_2d", viewport.msaa_2d)
+	config.save(settings_path)
 
 
 func toggle_fullscreen(fullscreen: bool):
@@ -141,20 +160,14 @@ func toggle_fullscreen(fullscreen: bool):
 		window.mode = Window.MODE_FULLSCREEN
 	else:
 		window.mode = Window.MODE_WINDOWED
-		# Workaround bug where the window is stuck maximized
-		if OS.get_name() == "Linux":
-			await get_tree().create_timer(0.1).timeout
-			window.mode = Window.MODE_FULLSCREEN
-			await get_tree().create_timer(0.1).timeout
-			window.mode = Window.MODE_WINDOWED
-		
+		await get_tree().create_timer(0.2).timeout
 		window.move_to_center.call_deferred()
 	
-	if Engine.is_editor_hint():
+	if not configs_ready:
 		return
 	# Update settings
-	ProjectSettings.set_setting("display/window/size/mode", window.mode)
-	ProjectSettings.save()
+	config.set_value("window", "mode", window.mode)
+	config.save(settings_path)
 
 
 func play():
