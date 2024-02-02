@@ -56,7 +56,6 @@ var config = ConfigFile.new()
 var configs_ready := false
 const settings_path := "user://settings.cfg"
 
-
 @onready
 var msaa_enabled = get_viewport().msaa_3d != Viewport.MSAA_DISABLED
 
@@ -80,13 +79,14 @@ func _ready() -> void:
 	var err = config.load(settings_path)
 
 	if err == OK:
-		msaa_enabled = config.get_value("anti_aliasing", "msaa_3d", )
 		current_msaa_3d = config.get_value("anti_aliasing", "msaa_3d", current_msaa_3d)
 		current_msaa_2d = config.get_value("anti_aliasing", "msaa_2d", current_msaa_2d)
+		msaa_enabled = config.get_value("anti_aliasing", "msaa_3d", current_msaa_3d != Viewport.MSAA_DISABLED)
 		var fullscreen = config.get_value("window", "mode", get_window().mode)
 		toggle_fullscreen(fullscreen)
-		quality_slider.value = config.get_value("scaling_3d", "scale", 0.75)
-		graphics_scale_changed(quality_slider.value)
+		var scale : float = config.get_value("scaling_3d", "scale", 0.75)
+		quality_slider.value = scale
+		graphics_scale_changed(scale)
 		configs_ready = true
 	else:
 		quality_slider.value = ProjectSettings.get_setting("rendering/scaling_3d/scale")
@@ -147,7 +147,7 @@ func graphics_scale_changed(value: float):
 	if not configs_ready:
 		return
 	# Update settings
-	config.set_value("scaling_3d", "scale", viewport.msaa_3d)
+	config.set_value("scaling_3d", "scale", value)
 	config.set_value("anti_aliasing", "msaa_3d", viewport.msaa_3d)
 	config.set_value("anti_aliasing", "msaa_2d", viewport.msaa_2d)
 	config.save(settings_path)
