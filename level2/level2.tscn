@@ -280,7 +280,7 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Section10" type="Node3D" parent="Shots"]
-transform = Transform3D(0.147019, 0, 0.989134, 0, 1, 0, -0.989133, 0, 0.147019, 2.43367, -0.979805, -34.1796)
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 2.43367, -0.979805, -34.1796)
 script = ExtResource("7_jgjij")
 priority_override = false
 priority = 0
@@ -351,5 +351,5 @@ libraries = {
 [connection signal="target_shot" from="Targets/Werewolf2" to="." method="_on_target_shot"]
 [connection signal="target_shot" from="Targets/Werewolf3" to="." method="_on_target_shot"]
 [connection signal="target_shot" from="Targets/Werewolf4" to="." method="_on_target_shot"]
-[connection signal="target_shot" from="Targets/Wampire" to="." method="_on_wampire_target_shot"]
 [connection signal="target_shot" from="Targets/Wampire" to="." method="_on_target_shot"]
+[connection signal="target_shot" from="Targets/Wampire" to="." method="_on_wampire_target_shot"]
