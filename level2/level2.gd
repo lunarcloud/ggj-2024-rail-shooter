@@ -34,7 +34,9 @@ func _on_wampire_target_shot():
 func _on_moon_shot():
 	if current_section == _wampire_section:
 		return
-		
+	
+	level_timer.time_left += 12.0
+	
 	for section in range(current_section, _wampire_section - 1):
 		if section_skip_time[section] == 0:
 			section_targets[section] = 0
