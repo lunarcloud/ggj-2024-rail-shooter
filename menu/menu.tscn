@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctgi3nme7o3fj"]
+[gd_scene load_steps=11 format=3 uid="uid://ctgi3nme7o3fj"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_e4dji"]
 [ext_resource type="AudioStream" uid="uid://ci5ji8u7u4crv" path="res://addons/kenney_interface_sounds/click_002.wav" id="2_0u4gy"]
@@ -6,11 +6,16 @@
 [ext_resource type="AudioStream" uid="uid://dtukqrr0cjuta" path="res://menu/Funky Energy Loop.mp3" id="3_rucph"]
 [ext_resource type="AudioStream" uid="uid://ds8y1vry41qqa" path="res://addons/kenney voiceover pack fighter/arcade_mode.ogg" id="4_ruiu8"]
 [ext_resource type="Texture2D" uid="uid://cc1pk7urxmm7e" path="res://sunglasses.png" id="6_bccmb"]
+[ext_resource type="FontFile" uid="uid://c4mm3of2mc8o5" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="7_k3lk5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u2rgb"]
 shader = ExtResource("2_in50k")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rs6yw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0c64p"]
+font = ExtResource("7_k3lk5")
+shadow_color = Color(0, 0, 0, 0.796078)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -131,16 +136,41 @@ text = "Graphics  Options"
 horizontal_alignment = 1
 
 [node name="AAToggle" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 button_pressed = true
 text = "Anti-Aliasing"
 
 [node name="1080pToggle" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 button_pressed = true
 text = "Native Res"
+
+[node name="QualitySetting" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/QualitySetting"]
+layout_mode = 2
+text = "Quality"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/QualitySetting"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.5
+max_value = 1.5
+step = 0.25
+value = 0.75
+tick_count = 5
+ticks_on_borders = true
+
+[node name="ValueLabel" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/QualitySetting"]
+layout_mode = 2
+text = "75%"
+label_settings = SubResource("LabelSettings_0c64p")
 
 [node name="FullscreenToggle" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
 layout_mode = 2
@@ -182,6 +212,7 @@ text = "Quit"
 [connection signal="focus_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer2/1080pToggle" to="." method="_on_button_focus"]
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer2/1080pToggle" to="." method="_on_button_focus"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/VBoxContainer2/1080pToggle" to="." method="toggle_native_or_1080p_mode"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/VBoxContainer2/QualitySetting/HSlider" to="." method="graphics_scale_changed"]
 [connection signal="focus_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer2/FullscreenToggle" to="." method="_on_button_focus"]
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer2/FullscreenToggle" to="." method="_on_button_focus"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/VBoxContainer2/FullscreenToggle" to="." method="toggle_fullscreen" flags=3]

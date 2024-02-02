@@ -41,6 +41,12 @@ var msaa_toggle : CheckButton = $VBoxContainer/HBoxContainer2/VBoxContainer2/AAT
 
 @onready
 var skip_level1_toggle : CheckButton = $VBoxContainer/HBoxContainer2/VBoxContainer/SkipLevel1Toggle
+
+@onready
+var quality_slider : HSlider = $VBoxContainer/HBoxContainer2/VBoxContainer2/QualitySetting/HSlider
+
+@onready
+var quality_slider_label : Label = $VBoxContainer/HBoxContainer2/VBoxContainer2/QualitySetting/ValueLabel
 	
 var _debounce := false
 
@@ -49,9 +55,13 @@ var graphics_compat_mode = RenderingServer.get_rendering_device() == null
 @onready
 var msaa_enabled = get_viewport().msaa_3d != Viewport.MSAA_DISABLED
 
+var current_msaa_2d = Viewport.MSAA_8X
+var current_msaa_3d = Viewport.MSAA_4X
+
 func _ready() -> void:
 	msaa_toggle.button_pressed = msaa_enabled
 	msaa_toggle.toggled.connect(change_msaa)
+	quality_slider.value = ProjectSettings.get_setting("rendering/scaling_3d/scale")
 	
 	match OS.get_name():
 		"Windows", "Linux":
@@ -75,16 +85,53 @@ func _process(_delta):
 
 func change_msaa(on: bool):
 	var viewport := get_viewport()
-	viewport.msaa_2d = Viewport.MSAA_8X if on else Viewport.MSAA_DISABLED
-	viewport.msaa_3d = Viewport.MSAA_4X if on else Viewport.MSAA_DISABLED
+	viewport.msaa_2d = current_msaa_2d if on else Viewport.MSAA_DISABLED
+	viewport.msaa_3d = current_msaa_3d if on else Viewport.MSAA_DISABLED
 	viewport.use_debanding = on
 	msaa_enabled = on
+	
+	if Engine.is_editor_hint():
+		return
+	# Update settings
+	ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_3d", viewport.msaa_3d)
+	ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_2d", viewport.msaa_2d)
+	ProjectSettings.save()
 
 
 func toggle_native_or_1080p_mode(is_native_3d: bool):
 	get_window().content_scale_mode = \
 		Window.CONTENT_SCALE_MODE_CANVAS_ITEMS if is_native_3d \
 		else Window.CONTENT_SCALE_MODE_VIEWPORT
+
+
+func graphics_scale_changed(value: float):
+	quality_slider_label.text = "%d %%" % (value * 100)
+	# Change the scaling factor and switch 3d scaling
+	var window := get_window()
+	window.scaling_3d_scale = value
+	
+	# Adjust MSAA amount
+	match value:
+		0.5, 0.75:
+			current_msaa_2d = Viewport.MSAA_8X 
+			current_msaa_3d = Viewport.MSAA_4X
+		1.0:
+			current_msaa_2d = Viewport.MSAA_8X 
+			current_msaa_3d = Viewport.MSAA_4X
+		_:
+			current_msaa_2d = Viewport.MSAA_2X 
+			current_msaa_3d = Viewport.MSAA_2X
+	var viewport := get_viewport()
+	viewport.msaa_2d = current_msaa_2d if msaa_enabled else Viewport.MSAA_DISABLED
+	viewport.msaa_3d = current_msaa_3d if msaa_enabled else Viewport.MSAA_DISABLED
+	
+	if Engine.is_editor_hint():
+		return
+	# Update settings
+	ProjectSettings.set_setting("rendering/scaling_3d/scale", window.scaling_3d_scale)
+	ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_3d", viewport.msaa_3d)
+	ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_2d", viewport.msaa_2d)
+	ProjectSettings.save()
 
 
 func toggle_fullscreen(fullscreen: bool):
@@ -102,6 +149,12 @@ func toggle_fullscreen(fullscreen: bool):
 			window.mode = Window.MODE_WINDOWED
 		
 		window.move_to_center.call_deferred()
+	
+	if Engine.is_editor_hint():
+		return
+	# Update settings
+	ProjectSettings.set_setting("display/window/size/mode", window.mode)
+	ProjectSettings.save()
 
 
 func play():
@@ -207,4 +260,3 @@ func quit():
 func _on_button_focus():
 	sfx.stream = focus_sound
 	sfx.play(0)
-
