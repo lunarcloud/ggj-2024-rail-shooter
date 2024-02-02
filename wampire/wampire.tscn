@@ -436,6 +436,7 @@ autoplay = "Cloaked"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Target"]
 shape = SubResource("CapsuleShape3D_imc8f")
+disabled = true
 
 [node name="Sprites" type="Node3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.228363, 0)

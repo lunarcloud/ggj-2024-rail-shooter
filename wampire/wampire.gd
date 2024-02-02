@@ -13,6 +13,9 @@ var head1 : Node3D = $Sprites/HeadGroup1
 @onready
 var head2 : Node3D = $Sprites/HeadGroup2
 
+@onready
+var collision : CollisionShape3D = $Target/CollisionShape3D
+
 func _on_target_hurt():
 	head1.visible = false
 	head2.visible = true
@@ -36,14 +39,17 @@ func introduce() -> void:
 func ready_to_fire() -> void:
 	if is_instance_valid(anim):
 		anim.play("Ready")
+	collision.disabled = false
 
 
 func firing_fingerguns() -> void:
 	if is_instance_valid(anim):
 		anim.play("Fingerguns")
+	collision.disabled = false
 
 
 func idle() -> void:
 	if is_instance_valid(anim):
 		anim.play("Cloaked")
+	collision.disabled = true
 
