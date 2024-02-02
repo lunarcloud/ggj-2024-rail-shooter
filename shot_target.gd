@@ -20,10 +20,11 @@ func shoot():
 	if hits > 0:
 		return
 	
+	collision.disabled = true
+	
 	var anim : AnimationPlayer = get_node_or_null("AnimationPlayer")
 	if is_instance_valid(anim):
 		anim.play("Shot")
 		await get_tree().create_timer(shot_time).timeout
 	
 	target_shot.emit()
-	collision.disabled = true

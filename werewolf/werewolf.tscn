@@ -1074,6 +1074,7 @@ autoplay = "Idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeWolfed/Target"]
 shape = SubResource("CapsuleShape3D_ij703")
+disabled = true
 
 [node name="Sprites" type="Node3D" parent="DeWolfed"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.132033, 0)
