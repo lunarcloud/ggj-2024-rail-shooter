@@ -9,6 +9,7 @@ extends Button
 #region Constants
 
 const REMOTE_RELEASE_URL: StringName = "https://api.github.com/repos/ramokz/phantom-camera/releases"
+const UPDATER_CONSTANTS := preload("res://addons/phantom_camera/scripts/panel/updater/updater_constants.gd")
 
 #endregion
 
@@ -42,9 +43,9 @@ var on_before_refresh: Callable = func(): return true
 func _ready() -> void:
 	hide()
 
-	# Check for updates on GitHub
+	# Check for updates on GitHub Releases
 	check_for_update()
-	
+
 	pressed.connect(_on_update_button_pressed)
 	http_request.request_completed.connect(_request_request_completed)
 	download_update_panel.updated.connect(_on_download_update_panel_updated)
@@ -68,10 +69,42 @@ func _request_request_completed(result: int, response_code: int, headers: Packed
 	)
 
 	if versions.size() > 0:
-		download_update_panel.next_version_release = versions[0]
-		_set_scale()
+		# Safeguard forks from being updated itself
+		if FileAccess.file_exists("res://dev_scenes/3d/dev_scene_3d.tscn") or \
+			not ProjectSettings.get_setting(UPDATER_CONSTANTS.setting_updater_enabled):
 
-		download_dialog.show()
+			if not ProjectSettings.get_setting(UPDATER_CONSTANTS.setting_updater_notify_release): return
+
+			print_rich("
+[color=#3AB99A]   ********[/color]
+[color=#3AB99A] ************[/color]
+[color=#3AB99A]**************[/color]
+[color=#3AB99A]******  ***  *[/color]
+[color=#3AB99A]******  ***[/color]
+[color=#3AB99A]**********      *****[/color]
+[color=#3AB99A]********   ***********[/color]
+[color=#3AB99A]********  ***********  **[/color]
+[color=#3AB99A]*********  **************[/color]
+[color=#3AB99A]**********  *************[/color]
+[color=#3AB99A]**  **  **   *******   **[/color]
+[font_size=18][b]New Phantom Camera version is available[/b][/font_size]")
+
+			if FileAccess.file_exists("res://dev_scenes/3d/dev_scene_3d.tscn"):
+				print_rich("[font_size=14][color=#EAA15E][b]As you're using a fork of the project, you will need to update it manually[/b][/color][/font_size]")
+
+			print_rich("[font_size=12]If you don't want to see this message, then it can be disabled inside:\n[code]Project Settings/Phantom Camera/Updater/Show New Release Info on Editor Launch in Output[/code]")
+
+			return
+
+		download_update_panel.next_version_release = versions[0]
+		download_update_panel.show_updater_warning(
+			versions[0].tag_name.substr(1).split("."),
+			current_version.split(".")
+		)
+		_set_scale()
+		editor_plugin.panel_button.add_theme_color_override("font_color", Color("#3AB99A"))
+		editor_plugin.panel_button.icon = load("res://addons/phantom_camera/icons/phantom_camera_updater_panel_icon.svg")
+		editor_plugin.panel_button.add_theme_color_override("icon_normal_color", Color("#3AB99A"))
 		show()
 
 
@@ -79,14 +112,14 @@ func _on_update_button_pressed() -> void:
 	if needs_reload:
 		var will_refresh = on_before_refresh.call()
 		if will_refresh:
-			editor_plugin.get_editor_interface().restart_editor(true)
+			EditorInterface.restart_editor(true)
 	else:
 		_set_scale()
 		download_dialog.popup_centered()
 
 
 func _set_scale() -> void:
-	var scale: float = editor_plugin.get_editor_interface().get_editor_scale()
+	var scale: float = EditorInterface.get_editor_scale()
 	download_dialog.min_size = Vector2(300, 250) * scale
 
 
@@ -113,7 +146,7 @@ func _on_download_update_panel_failed() -> void:
 
 
 func _on_needs_reload_dialog_confirmed() -> void:
-	editor_plugin.get_editor_interface().restart_editor(true)
+	EditorInterface.restart_editor(true)
 
 
 func _on_timer_timeout() -> void:
@@ -138,5 +171,5 @@ func version_to_number(version: String) -> int:
 
 func check_for_update() -> void:
 	http_request.request(REMOTE_RELEASE_URL)
-	
+
 #endregion

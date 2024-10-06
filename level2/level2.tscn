@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dsc5xctxffds1"]
+[gd_scene load_steps=49 format=3 uid="uid://dsc5xctxffds1"]
 
 [ext_resource type="Script" path="res://level2/level2.gd" id="1_hhkaw"]
 [ext_resource type="Environment" uid="uid://cxw6v5vqds6ye" path="res://level2/forward_renderer_env.tres" id="2_a8t13"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://die3q8qjh2fe5" path="res://hud/hud.tscn" id="4_svkcw"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_gmqx4"]
 [ext_resource type="MeshLibrary" uid="uid://dqwjgvh4mo64s" path="res://addons/kaykit_city_builder_bits/kaykit_city.meshlib" id="7_32815"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="7_jgjij"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="7_jgjij"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_xl54x"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="9_sh4l4"]
 [ext_resource type="PackedScene" uid="uid://b6slrc2ueonn5" path="res://addons/kaykit_city_builder_bits/Assets/gltf/building_B.gltf" id="10_cfpvt"]
 [ext_resource type="PackedScene" uid="uid://dmv5lkbo8ir16" path="res://wampire/wampire.tscn" id="10_f7sbg"]
 [ext_resource type="Texture2D" uid="uid://bgx7ram2bsc22" path="res://butt-moon/left.png" id="10_in6rl"]
@@ -17,11 +18,185 @@
 [ext_resource type="Script" path="res://shot_target.gd" id="12_3cvgs"]
 [ext_resource type="Texture2D" uid="uid://cc1pk7urxmm7e" path="res://sunglasses.png" id="13_4vf5r"]
 
-[sub_resource type="Resource" id="Resource_r7bax"]
+[sub_resource type="Resource" id="Resource_ys7b5"]
 script = ExtResource("7_xl54x")
 duration = 1.0
 transition = 0
 ease = 2
+
+[sub_resource type="Resource" id="Resource_bqfwc"]
+script = ExtResource("9_sh4l4")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_bon2l"]
+script = ExtResource("7_xl54x")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_sbt11"]
+script = ExtResource("9_sh4l4")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_xq0om"]
+script = ExtResource("7_xl54x")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_2tesb"]
+script = ExtResource("9_sh4l4")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_8s8bo"]
+script = ExtResource("7_xl54x")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_ohswn"]
+script = ExtResource("9_sh4l4")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_ccx7u"]
+script = ExtResource("7_xl54x")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_ywtab"]
+script = ExtResource("9_sh4l4")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_slhpi"]
+script = ExtResource("7_xl54x")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_7buxx"]
+script = ExtResource("9_sh4l4")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_xgj4h"]
+script = ExtResource("7_xl54x")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_6lecm"]
+script = ExtResource("9_sh4l4")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_gy1o4"]
+script = ExtResource("7_xl54x")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_pjnvl"]
+script = ExtResource("9_sh4l4")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_o7scq"]
+script = ExtResource("7_xl54x")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_cm3ql"]
+script = ExtResource("9_sh4l4")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_wynmt"]
+script = ExtResource("7_xl54x")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_nlk5h"]
+script = ExtResource("9_sh4l4")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_24eax"]
 transparency = 1
@@ -281,124 +456,65 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.605, 0)
 [node name="Section1" type="Node3D" parent="Shots"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71221, -0.698638, 0)
 script = ExtResource("7_jgjij")
-priority_override = false
 priority = 1
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_ys7b5")
+camera_3d_resource = SubResource("Resource_bqfwc")
 
 [node name="Section2" type="Node3D" parent="Shots"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71221, -0.698638, -13.9038)
 script = ExtResource("7_jgjij")
-priority_override = false
-priority = 0
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_bon2l")
+camera_3d_resource = SubResource("Resource_sbt11")
 
 [node name="Section3" type="Node3D" parent="Shots"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.71221, -0.698638, -13.9038)
 script = ExtResource("7_jgjij")
-priority_override = false
-priority = 0
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_xq0om")
+camera_3d_resource = SubResource("Resource_2tesb")
 
 [node name="Section4" type="Node3D" parent="Shots"]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.71221, -0.698638, -13.9038)
 script = ExtResource("7_jgjij")
-priority_override = false
-priority = 0
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_8s8bo")
+camera_3d_resource = SubResource("Resource_ohswn")
 
 [node name="Section5" type="Node3D" parent="Shots"]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 18.8424, -0.698638, -13.9038)
 script = ExtResource("7_jgjij")
-priority_override = false
-priority = 0
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_ccx7u")
+camera_3d_resource = SubResource("Resource_ywtab")
 
 [node name="Section6" type="Node3D" parent="Shots"]
 transform = Transform3D(0.960895, 0, 0.276912, 0, 1, 0, -0.276912, 0, 0.960896, 23.561, -0.698638, -16.5751)
 script = ExtResource("7_jgjij")
-priority_override = false
-priority = 0
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_slhpi")
+camera_3d_resource = SubResource("Resource_7buxx")
 
 [node name="Section7" type="Node3D" parent="Shots"]
 transform = Transform3D(0.965925, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 22.0209, -0.698638, -31.6824)
 script = ExtResource("7_jgjij")
-priority_override = false
-priority = 0
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_xgj4h")
+camera_3d_resource = SubResource("Resource_6lecm")
 
 [node name="Section8" type="Node3D" parent="Shots"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -0.999999, 0, -4.37114e-08, 21.6803, -0.698638, -33.7764)
 script = ExtResource("7_jgjij")
-priority_override = false
-priority = 0
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_gy1o4")
+camera_3d_resource = SubResource("Resource_pjnvl")
 
 [node name="Section9" type="Node3D" parent="Shots"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.43367, -0.979805, -34.1796)
 script = ExtResource("7_jgjij")
-priority_override = false
-priority = 0
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_o7scq")
+camera_3d_resource = SubResource("Resource_cm3ql")
 
-[node name="Section10" type="Node3D" parent="Shots"]
+[node name="Section10" type="Node3D" parent="Shots" node_paths=PackedStringArray("look_at_target")]
 transform = Transform3D(0.147019, 0, 0.989134, 0, 1, 0, -0.989133, 0, 0.147019, 2.43367, -0.979805, -34.1796)
 script = ExtResource("7_jgjij")
-priority_override = false
-priority = 0
-follow_mode = 0
 look_at_mode = 2
 look_at_target = NodePath("../../Targets/Wampire")
-look_at_parameters/look_at_target_offset = Vector3(0, 0, 0)
-tween_parameters = SubResource("Resource_r7bax")
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_wynmt")
+camera_3d_resource = SubResource("Resource_nlk5h")
 
 [node name="Objects" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.49, 0)

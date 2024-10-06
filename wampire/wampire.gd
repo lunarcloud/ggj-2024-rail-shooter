@@ -52,4 +52,3 @@ func idle() -> void:
 	if is_instance_valid(anim):
 		anim.play("Cloaked")
 	collision.disabled = true
-

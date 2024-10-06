@@ -84,9 +84,9 @@ func _ready() -> void:
 		msaa_enabled = config.get_value("anti_aliasing", "msaa_3d", current_msaa_3d != Viewport.MSAA_DISABLED)
 		var fullscreen = config.get_value("window", "mode", get_window().mode)
 		toggle_fullscreen(fullscreen)
-		var scale : float = config.get_value("scaling_3d", "scale", 0.75)
-		quality_slider.value = scale
-		graphics_scale_changed(scale)
+		var scaleA : float = config.get_value("scaling_3d", "scale", 0.75)
+		quality_slider.value = scaleA
+		graphics_scale_changed(scaleA)
 		configs_ready = true
 	else:
 		quality_slider.value = ProjectSettings.get_setting("rendering/scaling_3d/scale")

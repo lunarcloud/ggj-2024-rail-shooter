@@ -1,13 +1,15 @@
-[gd_scene load_steps=38 format=3 uid="uid://chj0pgyxiko4l"]
+[gd_scene load_steps=48 format=3 uid="uid://chj0pgyxiko4l"]
 
 [ext_resource type="Script" path="res://level/level1.gd" id="1_8es4g"]
 [ext_resource type="AudioStream" uid="uid://cbtpokvpidwnl" path="res://level/Beat One.mp3" id="1_oj25m"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="3_a8cdm"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_a8cdm"]
 [ext_resource type="Script" path="res://player.gd" id="3_boyak"]
 [ext_resource type="PackedScene" uid="uid://die3q8qjh2fe5" path="res://hud/hud.tscn" id="4_npofv"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_u3jc4"]
 [ext_resource type="MeshLibrary" uid="uid://d038q44admb2h" path="res://addons/kaykit_prototype_bits/kaykit_proto.meshlib" id="5_0itso"]
 [ext_resource type="PackedScene" uid="uid://cth06yd5re42s" path="res://addons/kaykit_prototype_bits/Assets/gltf/target_small.gltf" id="5_qias4"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_ydjno"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="8_nr8bw"]
 [ext_resource type="Script" path="res://shot_target.gd" id="9_ifs8p"]
 [ext_resource type="Texture2D" uid="uid://cc1pk7urxmm7e" path="res://sunglasses.png" id="11_cvktd"]
 [ext_resource type="PackedScene" uid="uid://5frscqa3fsve" path="res://addons/kaykit_prototype_bits/Assets/gltf/Door_B.gltf" id="11_kc1t7"]
@@ -32,6 +34,78 @@ reflected_light_source = 1
 sdfgi_read_sky_light = false
 sdfgi_energy = 5.225
 fog_sky_affect = 0.5
+
+[sub_resource type="Resource" id="Resource_kcb63"]
+script = ExtResource("7_ydjno")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_se7t5"]
+script = ExtResource("8_nr8bw")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_ekany"]
+script = ExtResource("7_ydjno")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_axv1q"]
+script = ExtResource("8_nr8bw")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_80oca"]
+script = ExtResource("7_ydjno")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_prjmc"]
+script = ExtResource("8_nr8bw")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+
+[sub_resource type="Resource" id="Resource_i1s7c"]
+script = ExtResource("7_ydjno")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_7s7qo"]
+script = ExtResource("8_nr8bw")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
 
 [sub_resource type="Animation" id="Animation_x6mjb"]
 length = 0.001
@@ -349,7 +423,6 @@ bus = &"Voice"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984905, 0.173098, 0, -0.173098, 0.984905, 0.5, 2, 3.44)
 current = true
-fov = 74.9333
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("4_u3jc4")
@@ -360,50 +433,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 [node name="Section1" type="Node3D" parent="Shots"]
 transform = Transform3D(1, 0, 0, 0, 0.984905, 0.173098, 0, -0.173098, 0.984905, 0.5, 0, 3.44)
 script = ExtResource("3_a8cdm")
-priority_override = false
 priority = 1
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_kcb63")
+camera_3d_resource = SubResource("Resource_se7t5")
 
 [node name="Section2" type="Node3D" parent="Shots"]
 transform = Transform3D(0.0317422, 0, -0.999496, 0, 1, 0, 0.999496, 0, 0.0317422, 2.173, 0, -9.68)
 script = ExtResource("3_a8cdm")
-priority_override = false
-priority = 0
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_ekany")
+camera_3d_resource = SubResource("Resource_axv1q")
 
 [node name="Section3" type="Node3D" parent="Shots"]
 transform = Transform3D(0.487571, 0, -0.873084, 0, 1, 0, 0.873084, 0, 0.487571, 13.2197, 0, -9.01092)
 script = ExtResource("3_a8cdm")
-priority_override = false
-priority = 0
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_80oca")
+camera_3d_resource = SubResource("Resource_prjmc")
 
 [node name="Section4" type="Node3D" parent="Shots"]
 transform = Transform3D(0.880469, 0, 0.474104, 0, 1, 0, -0.474104, 0, 0.880469, 15, 0, -14)
 script = ExtResource("3_a8cdm")
-priority_override = false
 priority = 1
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
+tween_resource = SubResource("Resource_i1s7c")
+camera_3d_resource = SubResource("Resource_7s7qo")
 
 [node name="Walls" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
